@@ -38,7 +38,7 @@ function initMap() {
 function getData() {
 	
 	var request = new XMLHttpRequest();
-	request.open("GET", "/data/" + city + ".json", false);
+	request.open("GET", "/BeerBelly/data/" + city + ".json", false);
 	request.send(null);
 	var cityData = JSON.parse(request.responseText);
 
