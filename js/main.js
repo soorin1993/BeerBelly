@@ -49,7 +49,7 @@ function getData() {
 		var streetName = cityData.data[i].streetAddress;
 		var cityStateZip = cityData.data[i].locality + ", " + cityData.data[i].region + " " + cityData.data[i].postalCode;
 		var website = cityData.data[i].brewery.website;
-		var phone = cityData.data[i].brewery.phone;
+		var phone = cityData.data[i].phone;
 		var lng = cityData.data[i].longitude;
 		var lat = cityData.data[i].latitude;
 		        
