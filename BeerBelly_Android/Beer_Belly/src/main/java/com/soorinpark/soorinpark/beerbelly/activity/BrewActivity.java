@@ -54,8 +54,8 @@ import retrofit2.Response;
 public class BrewActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-    //public final static String API_KEY = "fd9b5015d33721dd7bf301ea019b2fb9"; // deploy API key
-    public final static String API_KEY = "607feb4f9ed4b2f7c22de45803eb238d"; // dev API key
+    public final static String API_KEY = "fd9b5015d33721dd7bf301ea019b2fb9"; // deploy API key
+    //public final static String API_KEY = "607feb4f9ed4b2f7c22de45803eb238d"; // dev API key
 
     private String zipValue = null;
     private String cityValue = null;

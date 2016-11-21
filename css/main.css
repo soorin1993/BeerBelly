@@ -91,6 +91,8 @@ textarea {
 body {
 	font-family: 'Open Sans', sans-serif;
 	background-color: #FFF1D7;
+	margin: 0;
+	padding: 0;
 }
 
 h1 {
@@ -121,19 +123,126 @@ h2 {
 #map {
     height: 400px;
     width: 100%;
+    margin: 50px 0;
 }
 
+#brew_data li {
+	margin-bottom: 10px;
+}
 
+#brew_data p {
+	padding: 0;
+	margin: 0;
+}
 
+.select-container {
+	width: 100%;
+}
 
+.select_style {
+	margin-top: 20px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);	
+	background: #FFF;
+    overflow: hidden;
+    display: inline-block;
+    color: #525252;
+    font-weight: 300;
+    -webkit-border-radius: 5px 4px 4px 5px/5px 5px 4px 4px;
+    -moz-border-radius: 5px 4px 4px 5px/5px 5px 4px 4px;
+    border-radius: 5px 4px 4px 5px/5px 5px 4px 4px;
+    -webkit-box-shadow: 0 0 5px rgba(123, 123, 123, 0.2);
+    -moz-box-shadow: 0 0 5px rgba(123,123,123,.2);
+    box-shadow: 0 0 5px rgba(123, 123, 123, 0.2);
+    border: solid 1px #DADADA;
+    font-family: "helvetica neue",arial;
+    position: relative;
+    cursor: pointer;
+    padding-right:20px;
+}
 
+.select_style span {
+    position: absolute;
+    right: 10px;
+    width: 8px;
+    height: 8px;
+    background: url(http://projects.authenticstyle.co.uk/niceselect/arrow.png) no-repeat;
+    top: 50%;
+    margin-top: -4px;
+}
 
+.select_style select {
+    -webkit-appearance: none;
+    appearance:none;
+    width:120%;
+    background:none;
+    background:transparent;
+    border:none;
+    outline:none;
+    cursor:pointer;
+    padding:7px 10px;
+}
 
+.label {
+text-align: center;
+}
 
+#button {
+	font-family: 'Bungee', cursive;
+	font-size: 20px;
+	padding: 10px 20px;
+	background-color: #521300;
+	color: #FFF1D7;
+	-webkit-border-radius: 5px 4px 4px 5px/5px 5px 4px 4px;
+    -moz-border-radius: 5px 4px 4px 5px/5px 5px 4px 4px;
+    border-radius: 5px 4px 4px 5px/5px 5px 4px 4px;
+    cursor: pointer;
+	
+}
 
+#button-container {
+	text-align: center;
+}
 
+#results {
+	text-align: center;
+}
 
+#results h2 {
+	margin: 20px;
+}
 
+#results ol {
+	color: #521300;
+	font-size: 14px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	
+}
+
+#results ol li {
+	margin: 0;
+	padding: 20px;
+}
+
+footer {
+	margin: 0;
+	background-color: #BF2F13;
+	color: #FFF1D7;
+	padding: 20px;
+}
+
+footer a {
+	text-decoration: none;
+	color: #FFF1D7;
+}
+
+footer p {
+	margin: 0;
+	padding: 0;
+}
 
 /* ==========================================================================
    Helper classes
