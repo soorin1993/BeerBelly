@@ -114,7 +114,6 @@ function getData() {
 function search() {
 
 	if (markers.length > 0) {
-		alert(markers.length);
 		for (var j = 0; j < markers.length; j++) {
 	        markers[j].setMap(null);
 	        markers[j] = null;
