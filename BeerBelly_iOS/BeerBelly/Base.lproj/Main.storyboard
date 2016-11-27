@@ -33,7 +33,7 @@
                                     <constraint firstAttribute="width" constant="150" id="Tog-aK-b6T"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGL-s9-wYP">
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="drinkButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGL-s9-wYP">
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.054901960780000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Bungee-Regular" family="Bungee" pointSize="20"/>
                                 <color key="tintColor" red="0.69803921570000005" green="0.1058823529" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
@@ -46,13 +46,13 @@
                                 <color key="textColor" red="0.25490196079999999" green="0.054901960780000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cj7-GU-g7i">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="stateTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cj7-GU-g7i">
                                 <color key="backgroundColor" red="0.55294117649999996" green="0.1019607843" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="1" green="0.93725490199999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zipcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pIV-Y6-8iE">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="zipTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zipcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pIV-Y6-8iE">
                                 <color key="backgroundColor" red="0.55294117649999996" green="0.1019607843" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="1" green="0.93725490199999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
@@ -68,13 +68,13 @@
                                 <color key="textColor" red="0.69803921570000005" green="0.1058823529" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose a style" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Giu-55-JQ9">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="styleTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose a style" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Giu-55-JQ9">
                                 <color key="backgroundColor" red="0.55294117649999996" green="0.1019607843" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="1" green="0.93725490199999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bxx-I3-9qI">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cityTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bxx-I3-9qI">
                                 <color key="backgroundColor" red="0.55294117649999996" green="0.1019607843" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="1" green="0.93725490199999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
@@ -107,6 +107,13 @@
                             <constraint firstItem="Cj7-GU-g7i" firstAttribute="top" secondItem="Bxx-I3-9qI" secondAttribute="bottom" constant="15" id="zXc-PM-hN3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cityTextField" destination="Bxx-I3-9qI" id="PbJ-YJ-vKy"/>
+                        <outlet property="drinkButton" destination="pGL-s9-wYP" id="pHN-68-5YP"/>
+                        <outlet property="stateTextField" destination="Cj7-GU-g7i" id="a5C-AR-U3W"/>
+                        <outlet property="styleTextField" destination="Giu-55-JQ9" id="KnC-Ms-C4I"/>
+                        <outlet property="zipTextField" destination="pIV-Y6-8iE" id="8iE-CZ-a6b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

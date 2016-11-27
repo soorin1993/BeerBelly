@@ -11,13 +11,31 @@
 		6A1249C31DDE3AA0001EA943 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1249C21DDE3AA0001EA943 /* MainViewController.swift */; };
 		6A1249C61DDE3AA0001EA943 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A1249C41DDE3AA0001EA943 /* Main.storyboard */; };
 		6A1249CB1DDE3AA0001EA943 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A1249C91DDE3AA0001EA943 /* LaunchScreen.storyboard */; };
-		6AB441121DEB89DA00D13EBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AB441111DEB89DA00D13EBB /* Assets.xcassets */; };
+		6A9938351DEB9F27006E5F2C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF5EF931DEB98D700D542A5 /* SwiftyJSON.framework */; };
+		6A9938361DEB9F27006E5F2C /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF5EF931DEB98D700D542A5 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6A9938371DEB9F27006E5F2C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF5EF901DEB982100D542A5 /* Alamofire.framework */; };
+		6A9938381DEB9F27006E5F2C /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF5EF901DEB982100D542A5 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6AB441151DEB8C7A00D13EBB /* Bungee-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6AB441131DEB8C7100D13EBB /* Bungee-Regular.ttf */; };
 		6AB441161DEB8C7A00D13EBB /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6AB441141DEB8C7100D13EBB /* OpenSans-Regular.ttf */; };
 		6AF5EF921DEB98D700D542A5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF5EF901DEB982100D542A5 /* Alamofire.framework */; };
 		6AF5EF941DEB98D700D542A5 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF5EF931DEB98D700D542A5 /* SwiftyJSON.framework */; };
 		6AF5EF961DEB999500D542A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AF5EF951DEB999500D542A5 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6A9938391DEB9F27006E5F2C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6A9938361DEB9F27006E5F2C /* SwiftyJSON.framework in Embed Frameworks */,
+				6A9938381DEB9F27006E5F2C /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6A1249BD1DDE3AA0001EA943 /* BeerBelly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerBelly.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,7 +44,6 @@
 		6A1249C51DDE3AA0001EA943 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6A1249CA1DDE3AA0001EA943 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6A1249CC1DDE3AA0001EA943 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6AB441111DEB89DA00D13EBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		6AB441131DEB8C7100D13EBB /* Bungee-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bungee-Regular.ttf"; sourceTree = "<group>"; };
 		6AB441141DEB8C7100D13EBB /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		6AB4411D1DEB8EFA00D13EBB /* UIColor.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = UIColor.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,6 +59,8 @@
 			files = (
 				6AF5EF941DEB98D700D542A5 /* SwiftyJSON.framework in Frameworks */,
 				6AF5EF921DEB98D700D542A5 /* Alamofire.framework in Frameworks */,
+				6A9938351DEB9F27006E5F2C /* SwiftyJSON.framework in Frameworks */,
+				6A9938371DEB9F27006E5F2C /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,7 +95,6 @@
 		6A1249BF1DDE3AA0001EA943 /* BeerBelly */ = {
 			isa = PBXGroup;
 			children = (
-				6AB441111DEB89DA00D13EBB /* Assets.xcassets */,
 				6A1249C01DDE3AA0001EA943 /* AppDelegate.swift */,
 				6AB441131DEB8C7100D13EBB /* Bungee-Regular.ttf */,
 				6AB441141DEB8C7100D13EBB /* OpenSans-Regular.ttf */,
@@ -108,6 +126,7 @@
 				6A1249B91DDE3AA0001EA943 /* Sources */,
 				6A1249BA1DDE3AA0001EA943 /* Frameworks */,
 				6A1249BB1DDE3AA0001EA943 /* Resources */,
+				6A9938391DEB9F27006E5F2C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -184,7 +203,6 @@
 				6AB441151DEB8C7A00D13EBB /* Bungee-Regular.ttf in Resources */,
 				6AB441161DEB8C7A00D13EBB /* OpenSans-Regular.ttf in Resources */,
 				6A1249CB1DDE3AA0001EA943 /* LaunchScreen.storyboard in Resources */,
-				6AB441121DEB89DA00D13EBB /* Assets.xcassets in Resources */,
 				6AF5EF961DEB999500D542A5 /* Assets.xcassets in Resources */,
 				6A1249C61DDE3AA0001EA943 /* Main.storyboard in Resources */,
 			);
