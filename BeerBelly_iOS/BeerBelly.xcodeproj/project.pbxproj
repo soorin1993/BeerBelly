@@ -8,24 +8,44 @@
 
 /* Begin PBXBuildFile section */
 		6A1249C11DDE3AA0001EA943 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1249C01DDE3AA0001EA943 /* AppDelegate.swift */; };
-		6A1249C31DDE3AA0001EA943 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1249C21DDE3AA0001EA943 /* ViewController.swift */; };
+		6A1249C31DDE3AA0001EA943 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1249C21DDE3AA0001EA943 /* MainViewController.swift */; };
 		6A1249C61DDE3AA0001EA943 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A1249C41DDE3AA0001EA943 /* Main.storyboard */; };
-		6A1249C81DDE3AA0001EA943 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A1249C71DDE3AA0001EA943 /* Assets.xcassets */; };
 		6A1249CB1DDE3AA0001EA943 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A1249C91DDE3AA0001EA943 /* LaunchScreen.storyboard */; };
+		6AB441121DEB89DA00D13EBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AB441111DEB89DA00D13EBB /* Assets.xcassets */; };
+		6AB441151DEB8C7A00D13EBB /* Bungee-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6AB441131DEB8C7100D13EBB /* Bungee-Regular.ttf */; };
+		6AB441161DEB8C7A00D13EBB /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6AB441141DEB8C7100D13EBB /* OpenSans-Regular.ttf */; };
+		6AF5EF921DEB98D700D542A5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF5EF901DEB982100D542A5 /* Alamofire.framework */; };
+		6AF5EF941DEB98D700D542A5 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF5EF931DEB98D700D542A5 /* SwiftyJSON.framework */; };
+		6AF5EF961DEB999500D542A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AF5EF951DEB999500D542A5 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6A1249BD1DDE3AA0001EA943 /* BeerBelly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerBelly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A1249C01DDE3AA0001EA943 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6A1249C21DDE3AA0001EA943 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6A1249C21DDE3AA0001EA943 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		6A1249C51DDE3AA0001EA943 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6A1249C71DDE3AA0001EA943 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A1249CA1DDE3AA0001EA943 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6A1249CC1DDE3AA0001EA943 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AB441111DEB89DA00D13EBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
+		6AB441131DEB8C7100D13EBB /* Bungee-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bungee-Regular.ttf"; sourceTree = "<group>"; };
+		6AB441141DEB8C7100D13EBB /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		6AB4411D1DEB8EFA00D13EBB /* UIColor.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = UIColor.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AF5EF901DEB982100D542A5 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		6AF5EF931DEB98D700D542A5 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		6AF5EF951DEB999500D542A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		6A1249BA1DDE3AA0001EA943 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AF5EF941DEB98D700D542A5 /* SwiftyJSON.framework in Frameworks */,
+				6AF5EF921DEB98D700D542A5 /* Alamofire.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AB4411A1DEB8EFA00D13EBB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -40,6 +60,7 @@
 			children = (
 				6A1249BF1DDE3AA0001EA943 /* BeerBelly */,
 				6A1249BE1DDE3AA0001EA943 /* Products */,
+				6AF5EF8F1DEB982100D542A5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -47,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				6A1249BD1DDE3AA0001EA943 /* BeerBelly.app */,
+				6AB4411D1DEB8EFA00D13EBB /* UIColor.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -54,14 +76,26 @@
 		6A1249BF1DDE3AA0001EA943 /* BeerBelly */ = {
 			isa = PBXGroup;
 			children = (
+				6AB441111DEB89DA00D13EBB /* Assets.xcassets */,
 				6A1249C01DDE3AA0001EA943 /* AppDelegate.swift */,
-				6A1249C21DDE3AA0001EA943 /* ViewController.swift */,
+				6AB441131DEB8C7100D13EBB /* Bungee-Regular.ttf */,
+				6AB441141DEB8C7100D13EBB /* OpenSans-Regular.ttf */,
+				6A1249C21DDE3AA0001EA943 /* MainViewController.swift */,
 				6A1249C41DDE3AA0001EA943 /* Main.storyboard */,
-				6A1249C71DDE3AA0001EA943 /* Assets.xcassets */,
 				6A1249C91DDE3AA0001EA943 /* LaunchScreen.storyboard */,
 				6A1249CC1DDE3AA0001EA943 /* Info.plist */,
+				6AF5EF951DEB999500D542A5 /* Assets.xcassets */,
 			);
 			path = BeerBelly;
+			sourceTree = "<group>";
+		};
+		6AF5EF8F1DEB982100D542A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6AF5EF931DEB98D700D542A5 /* SwiftyJSON.framework */,
+				6AF5EF901DEB982100D542A5 /* Alamofire.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -84,6 +118,23 @@
 			productReference = 6A1249BD1DDE3AA0001EA943 /* BeerBelly.app */;
 			productType = "com.apple.product-type.application";
 		};
+		6AB4411C1DEB8EFA00D13EBB /* UIColor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6AB441281DEB8EFB00D13EBB /* Build configuration list for PBXNativeTarget "UIColor" */;
+			buildPhases = (
+				6AB441191DEB8EFA00D13EBB /* Sources */,
+				6AB4411A1DEB8EFA00D13EBB /* Frameworks */,
+				6AB4411B1DEB8EFA00D13EBB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UIColor;
+			productName = UIColor;
+			productReference = 6AB4411D1DEB8EFA00D13EBB /* UIColor.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -95,6 +146,11 @@
 				ORGANIZATIONNAME = "Soo Rin Park";
 				TargetAttributes = {
 					6A1249BC1DDE3AA0001EA943 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = GJ6V736FLW;
+						ProvisioningStyle = Automatic;
+					};
+					6AB4411C1DEB8EFA00D13EBB = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = GJ6V736FLW;
 						ProvisioningStyle = Automatic;
@@ -115,6 +171,7 @@
 			projectRoot = "";
 			targets = (
 				6A1249BC1DDE3AA0001EA943 /* BeerBelly */,
+				6AB4411C1DEB8EFA00D13EBB /* UIColor */,
 			);
 		};
 /* End PBXProject section */
@@ -124,9 +181,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AB441151DEB8C7A00D13EBB /* Bungee-Regular.ttf in Resources */,
+				6AB441161DEB8C7A00D13EBB /* OpenSans-Regular.ttf in Resources */,
 				6A1249CB1DDE3AA0001EA943 /* LaunchScreen.storyboard in Resources */,
-				6A1249C81DDE3AA0001EA943 /* Assets.xcassets in Resources */,
+				6AB441121DEB89DA00D13EBB /* Assets.xcassets in Resources */,
+				6AF5EF961DEB999500D542A5 /* Assets.xcassets in Resources */,
 				6A1249C61DDE3AA0001EA943 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AB4411B1DEB8EFA00D13EBB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +204,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A1249C31DDE3AA0001EA943 /* ViewController.swift in Sources */,
+				6A1249C31DDE3AA0001EA943 /* MainViewController.swift in Sources */,
 				6A1249C11DDE3AA0001EA943 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AB441191DEB8EFA00D13EBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +334,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GJ6V736FLW;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = BeerBelly/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.soorinpark.BeerBelly;
@@ -273,10 +351,40 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GJ6V736FLW;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = BeerBelly/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.soorinpark.BeerBelly;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		6AB441291DEB8EFB00D13EBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = GJ6V736FLW;
+				INFOPLIST_FILE = UIColor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.soorinpark.BeerBelly.UIColor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		6AB4412A1DEB8EFB00D13EBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = GJ6V736FLW;
+				INFOPLIST_FILE = UIColor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.soorinpark.BeerBelly.UIColor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -300,6 +408,16 @@
 				6A1249D11DDE3AA0001EA943 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6AB441281DEB8EFB00D13EBB /* Build configuration list for PBXNativeTarget "UIColor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AB441291DEB8EFB00D13EBB /* Debug */,
+				6AB4412A1DEB8EFB00D13EBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
