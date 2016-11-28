@@ -16,10 +16,14 @@ let BREWERYDB_API_KEY = "607feb4f9ed4b2f7c22de45803eb238d" //dev
 
 let baseURL = "http://api.brewerydb.com/v2/"
 
-class BrewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class BrewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
 
     @IBOutlet weak var gmapView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    
+    var mapView: GMSMapView!
+    var locationManager = CLLocationManager()
+    var didFindMyLocation = false
     
     var styleId: String?
     var cityText: String?
@@ -36,17 +40,17 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         
         let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
-        let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: view.frame.width, height: 250), camera: camera)
-        mapView.isMyLocationEnabled = true
-        //gmapview = mapView
+        mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: view.frame.width, height: 250), camera: camera)
         gmapView.addSubview(mapView)
+        mapView.isMyLocationEnabled = true
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
         
-        // Creates a marker in the center of the map.
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.map = mapView
+//        let marker = GMSMarker()
+//        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
+//        marker.title = "Sydney"
+//        marker.snippet = "Australia"
+//        marker.map = mapView
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -56,6 +60,18 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100; //Set this to any value that works for you.
+
+
+    }
+    
+    //Location Manager delegates
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let location = locations.last
+        let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude:(location?.coordinate.longitude)!, zoom:14)
+        mapView.animate(to: camera)
+        self.locationManager.stopUpdatingLocation()
+        
     }
     
     func createBrewURL() {
@@ -143,10 +159,6 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
             
         
         }
-    }
-    
-    func reloadTable() {
-
     }
 
     override func didReceiveMemoryWarning() {
