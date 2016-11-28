@@ -9,9 +9,12 @@
 import UIKit
 import GoogleMaps
 import Alamofire
+import SwiftyJSON
 
 let BREWERYDB_API_KEY = "607feb4f9ed4b2f7c22de45803eb238d" //dev
 //let BREWERYDB_API_KEY = "fd9b5015d33721dd7bf301ea019b2fb9" //release
+
+let baseURL = "http://api.brewerydb.com/v2/"
 
 class BrewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -26,13 +29,11 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
     var brewURL: String!
     var beerURL: String!
     
+    var brewData = [Brewery]()
+    var beerData = [Beer]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(styleId)
-        print(cityText)
-        print(stateText)
-        print(zipText)
         
         let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
         let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: view.frame.width, height: 250), camera: camera)
@@ -46,16 +47,16 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
         marker.title = "Sydney"
         marker.snippet = "Australia"
         marker.map = mapView
-    
+        
         tableView.delegate = self
         tableView.dataSource = self
-    
-        checkFieldVals()
+        
+        createBrewURL()
+        getBrewData()
     }
     
-    func checkFieldVals() {
+    func createBrewURL() {
         
-        let baseURL = "http://api.brewerydb.com/v2/"
         
         if zipText != "" {
             brewURL = baseURL + "locations?key=" + BREWERYDB_API_KEY + "&postalCode=" + zipText!
@@ -65,34 +66,87 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
             if cityText != "" && stateText != "" {
             brewURL = baseURL + "locations?key=" + BREWERYDB_API_KEY + "&locality=" + cityText! + "&region=" + stateText!
             }
-            else {
-                let alert = UIAlertController(title: "Error", message: "Please enter both city and state for a city-wide search.", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-                    
-                    self.navigationController?.popViewController(animated: true)
-                    }
-                ))
-                self.present(alert, animated: true, completion: nil)
-            }
         }
-
         print(brewURL)
-  
+        
+    }
+    
+    func createBeerURL() {
     }
     
     func getBrewData() {
-    
-        Alamofire.request("https://httpbin.org/get").responseJSON { response in
-            print(response.request)  // original URL request
-            print(response.response) // HTTP URL response
-            print(response.data)     // server data
-            print(response.result)   // result of response serialization
-            
-            if let JSON = response.result.value {
-                print("JSON: \(JSON)")
-            }
-        }
         
+        Alamofire.request(brewURL).responseJSON { response in
+            //print(response.request)  // original URL request
+            //print(response.response) // HTTP URL response
+            //print(response.data)     // server data
+            //print(response.result)   // result of response serialization
+            
+            switch response.result {
+            case .success:
+        
+                if let jsonData = response.result.value {
+                    
+                    var jsonObject = JSON(jsonData)
+                    jsonObject = jsonObject["data"]
+                    
+                    if jsonObject == JSON.null {
+                        let alert = UIAlertController(title: "Error", message: "No breweries were found.", preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+                            self.navigationController?.popViewController(animated: true)
+                            }))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                    
+                    print(jsonObject)
+                    
+                    for (key,brewItem):(String, JSON) in jsonObject {
+                        
+                        let brewStreet = brewItem["streetAddress"].stringValue
+                        let brewCity = brewItem["locality"].stringValue
+                        let brewState = brewItem["region"].stringValue
+                        let brewZip = brewItem["postalCode"].stringValue
+                        
+                        let brewCityStateZip  = brewCity + ", " + brewState + " " + brewZip
+                        
+                        let brewPhone = brewItem["phone"].stringValue
+                        let brewLong = brewItem["longitude"].doubleValue
+                        let brewLat = brewItem["latitude"].doubleValue
+                        
+                        let brewObj = brewItem["brewery"]
+                        
+                        let brewName = brewObj["name"].stringValue
+                        let brewWeb = brewObj["website"].stringValue
+                        let brewId = brewObj["id"].stringValue
+                        let brewDesc = brewObj["description"].stringValue
+                        let brewImgURL = brewObj["images"]["icon"].stringValue
+                        
+                        
+                        let brew = Brewery(brewId: brewId, brewName: brewName, brewDesc: brewDesc, brewStreet: brewStreet, brewCityStateZip: brewCityStateZip, brewWeb: brewWeb, brewPhone: brewPhone, brewImgURL: brewImgURL, brewLong: brewLong, brewLat: brewLat)
+                        
+                        self.brewData.append(brew)
+                        print(self.brewData.count)
+                        self.reloadTable()
+                    }
+                }
+            
+            case .failure(let error):
+                let alert = UIAlertController(title: "Error", message: String(describing: error), preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                self.present(alert, animated: true, completion: nil)
+
+            }
+            
+        
+        }
+    }
+    
+    func reloadTable() {
+        DispatchQueue.main.async() {
+            self.tableView.reloadData()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -109,7 +163,8 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        print(brewData.count)
+        return brewData.count
     }
     
     
@@ -117,6 +172,13 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "brewTableViewCell", for: indexPath) as! BrewTableViewCell
 
         // Configure the cell...
+        
+        cell.cell_brewName.text = brewData[indexPath.row].brewName
+        cell.cell_brewStreet.text = brewData[indexPath.row].brewStreet
+        cell.cell_brewCityStateZip.text = brewData[indexPath.row].brewCityStateZip
+        cell.cell_brewWeb.text = brewData[indexPath.row].brewWeb
+        cell.cell_brewPhone.text = brewData[indexPath.row].brewPhone
+        
         return cell
     }
     
