@@ -34,6 +34,7 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
     
         tableView.delegate = self
         tableView.dataSource = self
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,7 +59,6 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "brewTableViewCell", for: indexPath) as! BrewTableViewCell
 
         // Configure the cell...
-        cell.someLabel.text = ":D"
         return cell
     }
     
