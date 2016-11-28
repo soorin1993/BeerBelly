@@ -53,6 +53,9 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         createBrewURL()
         getBrewData()
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100; //Set this to any value that works for you.
     }
     
     func createBrewURL() {
@@ -98,7 +101,7 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
                         self.present(alert, animated: true, completion: nil)
                     }
                     
-                    print(jsonObject)
+                    //print(jsonObject)
                     
                     for (key,brewItem):(String, JSON) in jsonObject {
                         
@@ -125,8 +128,7 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
                         let brew = Brewery(brewId: brewId, brewName: brewName, brewDesc: brewDesc, brewStreet: brewStreet, brewCityStateZip: brewCityStateZip, brewWeb: brewWeb, brewPhone: brewPhone, brewImgURL: brewImgURL, brewLong: brewLong, brewLat: brewLat)
                         
                         self.brewData.append(brew)
-                        print(self.brewData.count)
-                        self.reloadTable()
+                        self.tableView.reloadData()
                     }
                 }
             
@@ -144,9 +146,7 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func reloadTable() {
-        DispatchQueue.main.async() {
-            self.tableView.reloadData()
-        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -163,7 +163,6 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        print(brewData.count)
         return brewData.count
     }
     
@@ -182,6 +181,9 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
+//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableViewAutomaticDimension
+//    }
     
     /*
      // Override to support conditional editing of the table view.
