@@ -40,6 +40,9 @@
                                 <state key="normal" title="DRINK!">
                                     <color key="titleColor" red="1" green="0.93725490199999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="JQw-j1-m5m" kind="show" id="UEq-1d-lFK"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEER BELLY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0JD-ED-KyM">
                                 <fontDescription key="fontDescription" name="Bungee-Regular" family="Bungee" pointSize="35"/>
@@ -118,6 +121,77 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
+        </scene>
+        <!--Brew View Controller-->
+        <scene sceneID="gGj-h0-adj">
+            <objects>
+                <viewController id="JQw-j1-m5m" customClass="BrewViewController" customModule="BeerBelly" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yGS-4J-NMo"/>
+                        <viewControllerLayoutGuide type="bottom" id="GYd-VD-dd5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Kef-Kg-wfD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Csr-LK-Z7Z">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="Ohg-o6-EZz"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="teh-IW-hzW">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="brewTableViewCell" rowHeight="100" id="HI5-DN-JCy" customClass="BrewTableViewCell" customModule="BeerBelly" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HI5-DN-JCy" id="Ndk-oC-tlB">
+                                            <frame key="frameInset" width="375" height="99"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Tc-RZ-WAq">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.55294117649999996" green="0.1019607843" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6Tc-RZ-WAq" firstAttribute="leading" secondItem="Ndk-oC-tlB" secondAttribute="leadingMargin" constant="20" id="LDb-oc-1je"/>
+                                                <constraint firstItem="6Tc-RZ-WAq" firstAttribute="top" secondItem="Ndk-oC-tlB" secondAttribute="topMargin" constant="20" id="oh2-pS-s5Y"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="someLabel" destination="6Tc-RZ-WAq" id="XJ0-nt-rgY"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="JQw-j1-m5m" id="JFL-QT-oBq"/>
+                                    <outlet property="delegate" destination="JQw-j1-m5m" id="30O-PE-vc9"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="teh-IW-hzW" secondAttribute="trailing" id="2fe-Ak-7nA"/>
+                            <constraint firstItem="teh-IW-hzW" firstAttribute="leading" secondItem="Kef-Kg-wfD" secondAttribute="leading" id="Bcm-O3-W7L"/>
+                            <constraint firstAttribute="trailing" secondItem="Csr-LK-Z7Z" secondAttribute="trailing" id="VDm-pX-qZm"/>
+                            <constraint firstItem="Csr-LK-Z7Z" firstAttribute="leading" secondItem="Kef-Kg-wfD" secondAttribute="leading" id="WiE-qQ-V4t"/>
+                            <constraint firstItem="GYd-VD-dd5" firstAttribute="top" secondItem="teh-IW-hzW" secondAttribute="bottom" id="adi-l1-adY"/>
+                            <constraint firstItem="Csr-LK-Z7Z" firstAttribute="top" secondItem="yGS-4J-NMo" secondAttribute="bottom" id="uPK-cH-ThK"/>
+                            <constraint firstItem="teh-IW-hzW" firstAttribute="top" secondItem="Csr-LK-Z7Z" secondAttribute="bottom" id="zqn-Wx-oQO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="gmapView" destination="Csr-LK-Z7Z" id="92r-cv-ibq"/>
+                        <outlet property="tableView" destination="teh-IW-hzW" id="0ZU-s9-bjc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LSP-Le-JTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="864.79999999999995" y="37.331334332833585"/>
         </scene>
     </scenes>
     <resources>
