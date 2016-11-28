@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WxA-n3-f4c">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -41,7 +41,7 @@
                                     <color key="titleColor" red="1" green="0.93725490199999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="JQw-j1-m5m" kind="show" id="UEq-1d-lFK"/>
+                                    <segue destination="JQw-j1-m5m" kind="show" identifier="mainToBrewSegue" id="UEq-1d-lFK"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEER BELLY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0JD-ED-KyM">
@@ -59,7 +59,7 @@
                                 <color key="backgroundColor" red="0.55294117649999996" green="0.1019607843" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="1" green="0.93725490199999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I like..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1b-Df-1Me">
                                 <fontDescription key="fontDescription" name="Bungee-Regular" family="Bungee" pointSize="20"/>
@@ -93,10 +93,10 @@
                             <constraint firstItem="Yme-sI-7Oa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="Ibz-V9-p4V"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Cj7-GU-g7i" secondAttribute="trailing" constant="30" id="KDE-13-EOR"/>
                             <constraint firstItem="pGL-s9-wYP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KK1-TU-gaQ"/>
+                            <constraint firstItem="pGL-s9-wYP" firstAttribute="top" secondItem="pIV-Y6-8iE" secondAttribute="bottom" constant="30" id="O5Q-p2-KK8"/>
                             <constraint firstItem="Ig3-WB-Nmd" firstAttribute="top" secondItem="Giu-55-JQ9" secondAttribute="bottom" constant="30" id="TJz-9d-4FX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pIV-Y6-8iE" secondAttribute="trailing" constant="30" id="XD6-cX-lB6"/>
                             <constraint firstItem="e1b-Df-1Me" firstAttribute="top" secondItem="0JD-ED-KyM" secondAttribute="bottom" constant="30" id="Xum-YG-0nz"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pGL-s9-wYP" secondAttribute="bottom" constant="50" id="Yzj-KO-jJX"/>
                             <constraint firstItem="Bxx-I3-9qI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="cZl-YW-eAw"/>
                             <constraint firstItem="e1b-Df-1Me" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="cg7-B9-goE"/>
                             <constraint firstItem="pIV-Y6-8iE" firstAttribute="top" secondItem="Cj7-GU-g7i" secondAttribute="bottom" constant="15" id="czB-W2-qIq"/>
@@ -110,6 +110,7 @@
                             <constraint firstItem="Cj7-GU-g7i" firstAttribute="top" secondItem="Bxx-I3-9qI" secondAttribute="bottom" constant="15" id="zXc-PM-hN3"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="oWN-gG-LYE"/>
                     <connections>
                         <outlet property="cityTextField" destination="Bxx-I3-9qI" id="PbJ-YJ-vKy"/>
                         <outlet property="drinkButton" destination="pGL-s9-wYP" id="pHN-68-5YP"/>
@@ -120,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
+            <point key="canvasLocation" x="972" y="38.23088455772114"/>
         </scene>
         <!--Brew View Controller-->
         <scene sceneID="gGj-h0-adj">
@@ -232,7 +233,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LSP-Le-JTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="864.79999999999995" y="37.331334332833585"/>
+            <point key="canvasLocation" x="1804" y="37.331334332833585"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wMF-fw-QVO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WxA-n3-f4c" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="k97-Wd-fxs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ttZ-PC-oED"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gk6-Oo-jfZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
         </scene>
     </scenes>
     <resources>

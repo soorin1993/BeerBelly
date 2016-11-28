@@ -10,8 +10,8 @@ import UIKit
 
 class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
-    @IBOutlet weak var styleTextField: UITextField!
     
+    @IBOutlet weak var styleTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var stateTextField: UITextField!
     @IBOutlet weak var zipTextField: UITextField!
@@ -25,16 +25,13 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     let stateList = ["Alaska",
                   "Alabama",
                   "Arkansas",
-                  "American Samoa",
                   "Arizona",
                   "California",
                   "Colorado",
                   "Connecticut",
-                  "District of Columbia",
                   "Delaware",
                   "Florida",
                   "Georgia",
-                  "Guam",
                   "Hawaii",
                   "Iowa",
                   "Idaho",
@@ -52,7 +49,7 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                   "Mississippi",
                   "Montana",
                   "North Carolina",
-                  " North Dakota",
+                  "North Dakota",
                   "Nebraska",
                   "New Hampshire",
                   "New Jersey",
@@ -63,7 +60,6 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                   "Oklahoma",
                   "Oregon",
                   "Pennsylvania",
-                  "Puerto Rico",
                   "Rhode Island",
                   "South Carolina",
                   "South Dakota",
@@ -71,7 +67,6 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                   "Texas",
                   "Utah",
                   "Virginia",
-                  "Virgin Islands",
                   "Vermont",
                   "Washington",
                   "Wisconsin",
@@ -79,8 +74,14 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                   "Wyoming"]
     
     override func viewDidLoad() {
+        
+        styleTextField.delegate = self
+        cityTextField.delegate = self
+        stateTextField.delegate = self
+        zipTextField.delegate = self
+        
         super.viewDidLoad()
-
+        
         let phColor = UIColor(red:0.90, green:0.73, blue:0.44, alpha:1.0)
         
         styleTextField.attributedPlaceholder = NSAttributedString(string:"Choose a style",
@@ -92,11 +93,8 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         zipTextField.attributedPlaceholder = NSAttributedString(string:"Zipcode",
                                                                   attributes:[NSForegroundColorAttributeName: phColor])
         
-        styleTextField.delegate = self
-        stateTextField.delegate = self
-        
-        let stylePickerView = UIPickerView(frame: CGRect(x: 0, y: 200, width: view.frame.width, height: 250))
-        let statePickerView = UIPickerView(frame: CGRect(x: 0, y: 200, width: view.frame.width, height: 250))
+        let stylePickerView = UIPickerView(frame: CGRect(x: 0, y: 200, width: view.frame.width, height: 200))
+        let statePickerView = UIPickerView(frame: CGRect(x: 0, y: 200, width: view.frame.width, height: 200))
         
         stylePickerView.delegate = self
         statePickerView.delegate = self
@@ -129,11 +127,16 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         cityTextField.inputAccessoryView = toolBar
         stateTextField.inputAccessoryView = toolBar
         zipTextField.inputAccessoryView = toolBar
-
+        
         drinkButton.layer.cornerRadius = 5
         drinkButton.contentEdgeInsets = UIEdgeInsetsMake(10.0, 30.0, 10.0, 30.0);
         
     }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     
     func donePicker() {
         
@@ -186,15 +189,35 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
     }
 
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if zipTextField.text != "" {
+            return true
+        }
+            
+        else {
+            if cityTextField.text != "" && stateTextField.text != "" {
+                return true
+            }
+            else {
+                let alert = UIAlertController(title: "Error", message: "Please enter both city and state for a city-wide search.", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in return false }))
+                present(alert, animated: true, completion: nil)
+                return false
+            }
+        }
+
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "mainToBrewSegue" {
+            let brewViewController = segue.destination as! BrewViewController;
+            
+            brewViewController.styleId = styleTextField.text
+            brewViewController.cityText = cityTextField.text
+            brewViewController.stateText = stateTextField.text
+            brewViewController.zipText = zipTextField.text
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

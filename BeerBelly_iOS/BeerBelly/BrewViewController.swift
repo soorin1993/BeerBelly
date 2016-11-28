@@ -8,17 +8,32 @@
 
 import UIKit
 import GoogleMaps
+import Alamofire
+
+let BREWERYDB_API_KEY = "607feb4f9ed4b2f7c22de45803eb238d" //dev
+//let BREWERYDB_API_KEY = "fd9b5015d33721dd7bf301ea019b2fb9" //release
 
 class BrewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var gmapView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
+    var styleId: String?
+    var cityText: String?
+    var stateText: String?
+    var zipText: String?
+    
+    var brewURL: String!
+    var beerURL: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Create a GMSCameraPosition that tells the map to display the
-        // coordinate -33.86,151.20 at zoom level 6.
+        print(styleId)
+        print(cityText)
+        print(stateText)
+        print(zipText)
+        
         let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
         let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: view.frame.width, height: 250), camera: camera)
         mapView.isMyLocationEnabled = true
@@ -35,6 +50,49 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
     
+        checkFieldVals()
+    }
+    
+    func checkFieldVals() {
+        
+        let baseURL = "http://api.brewerydb.com/v2/"
+        
+        if zipText != "" {
+            brewURL = baseURL + "locations?key=" + BREWERYDB_API_KEY + "&postalCode=" + zipText!
+        }
+        
+        else {
+            if cityText != "" && stateText != "" {
+            brewURL = baseURL + "locations?key=" + BREWERYDB_API_KEY + "&locality=" + cityText! + "&region=" + stateText!
+            }
+            else {
+                let alert = UIAlertController(title: "Error", message: "Please enter both city and state for a city-wide search.", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                    
+                    self.navigationController?.popViewController(animated: true)
+                    }
+                ))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+
+        print(brewURL)
+  
+    }
+    
+    func getBrewData() {
+    
+        Alamofire.request("https://httpbin.org/get").responseJSON { response in
+            print(response.request)  // original URL request
+            print(response.response) // HTTP URL response
+            print(response.data)     // server data
+            print(response.result)   // result of response serialization
+            
+            if let JSON = response.result.value {
+                print("JSON: \(JSON)")
+            }
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
