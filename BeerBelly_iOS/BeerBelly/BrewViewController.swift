@@ -21,11 +21,13 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var gmapView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
+    let locationManager = CLLocationManager()
     var mapView: GMSMapView!
-    var locationManager = CLLocationManager()
     var didFindMyLocation = false
     var markers = [GMSMarker]()
     var bounds = GMSCoordinateBounds()
+    var currentLocation: CLLocation!
+
     
     var styleId: String?
     var cityText: String?
@@ -46,6 +48,7 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
         mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: view.frame.width, height: 250), camera: camera)
 
@@ -59,13 +62,12 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         
-        createBrewURL()
-        getBrewData()
-        
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100; //Set this to any value that works for you.
-
-
+        
+        createBrewURL()
+        getBrewData()
+    
     }
     
     //Location Manager delegates
@@ -75,7 +77,24 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
         let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude:(location?.coordinate.longitude)!, zoom:14)
         mapView.animate(to: camera)
         self.locationManager.stopUpdatingLocation()
+        locationManager.requestWhenInUseAuthorization()
+        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse ||
+            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways){
+            currentLocation = locationManager.location
+            print(currentLocation.coordinate.longitude)
+        }
         
+        CLGeocoder().reverseGeocodeLocation(currentLocation, completionHandler: {
+            (placemarks, error) -> Void in
+            
+            let placeMark = (placemarks?[0])! as CLPlacemark
+            if let zip = placeMark.addressDictionary!["ZIP"] as? String {
+                print(zip)
+                self.zipText = zip
+                
+            }
+            
+        })
     }
     
     func fitToMarkers() {
@@ -98,17 +117,18 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func createBrewURL() {
         
-        
-        if zipText != "" {
+        if zipText == "" && cityText == "" && stateText == "" {
+            self.brewURL = baseURL + "locations?key=" + BREWERYDB_API_KEY + "&postalCode=" + self.zipText!
+        }
+        else if zipText != "" {
             brewURL = baseURL + "locations?key=" + BREWERYDB_API_KEY + "&postalCode=" + zipText!
         }
-        
         else {
             if cityText != "" && stateText != "" {
             brewURL = baseURL + "locations?key=" + BREWERYDB_API_KEY + "&locality=" + cityText! + "&region=" + stateText!
             }
         }
-        print(brewURL)
+        //print(brewURL)
         
     }
     

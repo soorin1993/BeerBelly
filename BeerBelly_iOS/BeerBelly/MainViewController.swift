@@ -194,7 +194,11 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
 
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if zipTextField.text != "" {
+        if zipTextField.text == "" && cityTextField.text == "" && stateTextField.text == "" {
+            return true
+        }
+        
+        else if zipTextField.text != "" {
             return true
         }
             
