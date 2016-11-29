@@ -16,7 +16,7 @@ let BREWERYDB_API_KEY = "607feb4f9ed4b2f7c22de45803eb238d" //dev
 
 let baseURL = "http://api.brewerydb.com/v2/"
 
-class BrewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+class BrewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, GMSMapViewDelegate {
 
     @IBOutlet weak var gmapView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -24,6 +24,7 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
     var mapView: GMSMapView!
     var locationManager = CLLocationManager()
     var didFindMyLocation = false
+    var markers = [GMSMarker]()
     
     var styleId: String?
     var cityText: String?
@@ -41,17 +42,14 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
         mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: view.frame.width, height: 250), camera: camera)
-        gmapView.addSubview(mapView)
-        mapView.isMyLocationEnabled = true
-        locationManager.delegate = self
+
         locationManager.startUpdatingLocation()
-        
-//        let marker = GMSMarker()
-//        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
-//        marker.title = "Sydney"
-//        marker.snippet = "Australia"
-//        marker.map = mapView
-        
+        mapView.isMyLocationEnabled = true
+        mapView.delegate = self
+        locationManager.delegate = self
+        mapView.settings.myLocationButton = true
+        gmapView.addSubview(mapView)
+
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -72,6 +70,14 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
         mapView.animate(to: camera)
         self.locationManager.stopUpdatingLocation()
         
+    }
+    
+    func addMarker(longitude: Double, lattitude: Double, brewName: String) {
+    
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: lattitude, longitude: longitude)
+        marker.title = brewName
+        marker.map = mapView
     }
     
     func createBrewURL() {
@@ -141,10 +147,14 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
                         let brewImgURL = brewObj["images"]["icon"].stringValue
                         
                         
+                        self.addMarker(longitude: brewLong, lattitude: brewLat, brewName: brewName)
+                        
                         let brew = Brewery(brewId: brewId, brewName: brewName, brewDesc: brewDesc, brewStreet: brewStreet, brewCityStateZip: brewCityStateZip, brewWeb: brewWeb, brewPhone: brewPhone, brewImgURL: brewImgURL, brewLong: brewLong, brewLat: brewLat)
                         
                         self.brewData.append(brew)
-                        self.tableView.reloadData()
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
                     }
                 }
             
