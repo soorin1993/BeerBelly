@@ -25,6 +25,7 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
     var locationManager = CLLocationManager()
     var didFindMyLocation = false
     var markers = [GMSMarker]()
+    var bounds = GMSCoordinateBounds()
     
     var styleId: String?
     var cityText: String?
@@ -36,6 +37,11 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var brewData = [Brewery]()
     var beerData = [Beer]()
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false;
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,12 +78,22 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    func fitToMarkers() {
+        print(markers.count)
+        for marker in markers {
+            bounds = bounds.includingCoordinate(marker.position)
+        }
+        let update = GMSCameraUpdate.fit(bounds, withPadding: 50)
+        mapView.animate(with: update)
+    }
+    
     func addMarker(longitude: Double, lattitude: Double, brewName: String) {
     
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: lattitude, longitude: longitude)
         marker.title = brewName
         marker.map = mapView
+        markers.append(marker)
     }
     
     func createBrewURL() {
@@ -148,7 +164,8 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
                         
                         
                         self.addMarker(longitude: brewLong, lattitude: brewLat, brewName: brewName)
-                        
+                        self.fitToMarkers()
+
                         let brew = Brewery(brewId: brewId, brewName: brewName, brewDesc: brewDesc, brewStreet: brewStreet, brewCityStateZip: brewCityStateZip, brewWeb: brewWeb, brewPhone: brewPhone, brewImgURL: brewImgURL, brewLong: brewLong, brewLat: brewLat)
                         
                         self.brewData.append(brew)
@@ -166,9 +183,8 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.present(alert, animated: true, completion: nil)
 
             }
-            
-        
         }
+
     }
 
     override func didReceiveMemoryWarning() {

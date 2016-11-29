@@ -73,6 +73,10 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                   "West Virginia",
                   "Wyoming"]
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true;
+    }
+    
     override func viewDidLoad() {
         
         styleTextField.delegate = self

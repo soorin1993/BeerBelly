@@ -123,7 +123,7 @@
             </objects>
             <point key="canvasLocation" x="972" y="38.23088455772114"/>
         </scene>
-        <!--Brew View Controller-->
+        <!--Breweries-->
         <scene sceneID="gGj-h0-adj">
             <objects>
                 <viewController id="JQw-j1-m5m" customClass="BrewViewController" customModule="BeerBelly" customModuleProvider="target" sceneMemberID="viewController">
@@ -234,6 +234,9 @@
                             <constraint firstItem="teh-IW-hzW" firstAttribute="top" secondItem="Csr-LK-Z7Z" secondAttribute="bottom" id="zqn-Wx-oQO"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Breweries" id="LJn-NF-Sre">
+                        <barButtonItem key="backBarButtonItem" title="Search" id="Y7X-7E-lJq"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="gmapView" destination="Csr-LK-Z7Z" id="92r-cv-ibq"/>
                         <outlet property="tableView" destination="teh-IW-hzW" id="0ZU-s9-bjc"/>
@@ -248,9 +251,15 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WxA-n3-f4c" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="k97-Wd-fxs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="k97-Wd-fxs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="0.93725490199999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.55294120311737061" green="0.10196078568696976" blue="0.066666670143604279" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Bungee-Regular" family="Bungee" pointSize="17"/>
+                            <color key="textColor" red="1" green="0.93725490199999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
