@@ -11,12 +11,13 @@ import UIKit
 class BeerTableViewController: UITableViewController {
 
     var beerData: [Beer]?
+    var selectedBeerName: String?
+    var beerStyleList = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100; //Set this to any value that works for you.
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,11 +38,19 @@ class BeerTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "beerTableViewCell", for: indexPath) as! BeerTableViewCell
         
         cell.cell_beerName.text = beerData?[indexPath.row].beerName
-        var beerStyleId = Int((beerData?[indexPath.row].beerStyle)!)
-        var beerStyleName = styleList[beerStyleId!-1]
-        cell.cell_beerStyle.text = beerStyleName
-        cell.cell_beerDesc.text = beerData?[indexPath.row].beerDesc
         
+        var beerStyleId = Int((beerData?[indexPath.row].beerStyle)!)
+        var beerStyleName = styleList[beerStyleId!]
+
+        beerStyleList.append(beerStyleName)
+        cell.cell_beerStyle.setTitle(beerStyleName, for: .normal)
+
+        //var buttonTitle = cell.cell_beerStyle.titleLabel?.text
+        cell.cell_beerStyle.tag = beerStyleId!
+        cell.cell_beerStyle.addTarget(self, action: #selector(openURL), for: .touchUpInside)
+
+        cell.cell_beerDesc.text = beerData?[indexPath.row].beerDesc
+
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor(red: 0.878, green: 0.686, blue: 0.345, alpha: 1)
         cell.selectedBackgroundView = bgColorView
@@ -49,6 +58,22 @@ class BeerTableViewController: UITableViewController {
         return cell
     }
 
+    func openURL(sender: UIButton) {
+        selectedBeerName = styleList[sender.tag]
+        performSegue(withIdentifier: "beerToWebSegue", sender: self)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "beerToWebSegue") {
+            let webViewController = segue.destination as! WebViewController
+            webViewController.beerStyleName = selectedBeerName
+        }
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -84,14 +109,8 @@ class BeerTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
+    
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

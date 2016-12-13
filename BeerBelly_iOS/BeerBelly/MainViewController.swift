@@ -88,6 +88,10 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
+        
+        NotificationCenter.default.addObserver(self, selector:  #selector(MainViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
         var styleURL = "http://api.brewerydb.com/v2/styles?key=" + BREWERYDB_API_KEY
         
         Alamofire.request(styleURL).responseJSON { response in
@@ -275,6 +279,26 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    
+    func keyboardWillShow(notification: NSNotification) {
+        print("up")
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        print("down")
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
     }
 
 }

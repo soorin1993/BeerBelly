@@ -11,8 +11,8 @@ import GoogleMaps
 import Alamofire
 import SwiftyJSON
 
-//let BREWERYDB_API_KEY = "607feb4f9ed4b2f7c22de45803eb238d" //dev
-let BREWERYDB_API_KEY = "fd9b5015d33721dd7bf301ea019b2fb9" //release
+let BREWERYDB_API_KEY = "d8604749e9fbcca807d465e753a72478" //dev
+//let BREWERYDB_API_KEY = "fd9b5015d33721dd7bf301ea019b2fb9" //release
 
 let baseURL = "http://api.brewerydb.com/v2/"
 
@@ -287,10 +287,12 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
         var beerTemp = beerData[brewId]
         var styleFound = false
         
-        for i in 0..<beerTemp!.count {
-            var foundBeerStyle = (beerTemp?[i].beerStyle)!
-            if (selectedStyleId == foundBeerStyle) {
-                styleFound = true
+        if selectedStyleId != nil {
+            for i in 0..<beerTemp!.count {
+                var foundBeerStyle = (beerTemp?[i].beerStyle)!
+                if (selectedStyleId == foundBeerStyle) {
+                    styleFound = true
+                }
             }
         }
         

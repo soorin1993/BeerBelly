@@ -11,7 +11,7 @@ import UIKit
 class BeerTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cell_beerName: UILabel!
-    @IBOutlet weak var cell_beerStyle: UILabel!
+    @IBOutlet weak var cell_beerStyle: UIButton!
     @IBOutlet weak var cell_beerDesc: UILabel!
     
     override func awakeFromNib() {
