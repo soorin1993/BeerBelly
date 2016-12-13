@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+
+var styleList = [String]()
 
 class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
@@ -18,9 +22,7 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     @IBOutlet weak var drinkButton: UIButton!
     
-    let styleList = ["something",
-                     "other",
-                     "than"]
+    var selectedStyleId: String?
     
     let stateList = ["Alaska",
                   "Alabama",
@@ -85,6 +87,48 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         zipTextField.delegate = self
         
         super.viewDidLoad()
+        
+        var styleURL = "http://api.brewerydb.com/v2/styles?key=" + BREWERYDB_API_KEY
+        
+        Alamofire.request(styleURL).responseJSON { response in
+            
+            switch response.result {
+            case .success:
+                
+                if let jsonData = response.result.value {
+                    
+                    var jsonObject = JSON(jsonData)
+                    jsonObject = jsonObject["data"]
+                    
+                    if jsonObject == JSON.null {
+//                        let alert = UIAlertController(title: "Error", message: "No breweries were found.", preferredStyle: UIAlertControllerStyle.alert)
+//                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+//                            self.navigationController?.popViewController(animated: true)
+//                        }))
+//                        self.present(alert, animated: true, completion: nil)
+                        print("styles couldnt load")
+                    }
+                    
+                    //print(jsonObject)
+                    
+                    for (key,styleItem):(String, JSON) in jsonObject {
+                        let styleName = styleItem["name"].stringValue
+                        styleList.append(styleName)
+                    }
+                    
+                }
+                
+            case .failure(let error):
+//                let alert = UIAlertController(title: "Error", message: String(describing: error), preferredStyle: UIAlertControllerStyle.alert)
+//                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+//                    self.navigationController?.popViewController(animated: true)
+//                }))
+//                self.present(alert, animated: true, completion: nil)
+                print("style failure")
+            }
+        }
+
+        
         
         let phColor = UIColor(red:0.90, green:0.73, blue:0.44, alpha:1.0)
         
@@ -186,6 +230,7 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView.tag == 1 {
             styleTextField.text = styleList[row]
+            selectedStyleId = String(row)
         }
         
         if pickerView.tag == 2 {
@@ -220,7 +265,7 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         if segue.identifier == "mainToBrewSegue" {
             let brewViewController = segue.destination as! BrewViewController;
             
-            brewViewController.styleId = styleTextField.text
+            brewViewController.selectedStyleId = selectedStyleId
             brewViewController.cityText = cityTextField.text
             brewViewController.stateText = stateTextField.text
             brewViewController.zipText = zipTextField.text

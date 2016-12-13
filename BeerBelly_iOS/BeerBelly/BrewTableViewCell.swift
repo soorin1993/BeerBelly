@@ -14,9 +14,9 @@ class BrewTableViewCell: UITableViewCell {
     @IBOutlet weak var cell_brewStreet: UILabel!
     @IBOutlet weak var cell_brewCityStateZip: UILabel!
     @IBOutlet weak var cell_brewWeb: UILabel!
-    
     @IBOutlet weak var cell_brewPhone: UILabel!
     
+    @IBOutlet weak var cell_brewBeerImg: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
