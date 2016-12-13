@@ -110,7 +110,9 @@
                             <constraint firstItem="Cj7-GU-g7i" firstAttribute="top" secondItem="Bxx-I3-9qI" secondAttribute="bottom" constant="15" id="zXc-PM-hN3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="oWN-gG-LYE"/>
+                    <navigationItem key="navigationItem" id="oWN-gG-LYE">
+                        <barButtonItem key="backBarButtonItem" title="Beer Belly" id="uJB-VV-GPO"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="cityTextField" destination="Bxx-I3-9qI" id="PbJ-YJ-vKy"/>
                         <outlet property="drinkButton" destination="pGL-s9-wYP" id="pHN-68-5YP"/>
@@ -256,6 +258,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.87843137979999997" green="0.68627452850000004" blue="0.34509804840000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" red="0.87843137979999997" green="0.68627452850000004" blue="0.34509804840000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="beerTableViewCell" rowHeight="123" id="bEH-0S-iua" customClass="BeerTableViewCell" customModule="BeerBelly" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="123"/>
@@ -299,6 +303,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="0.93725490570068359" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="cell_beerDesc" destination="F3D-2J-bfP" id="r1y-Un-TfG"/>
                                     <outlet property="cell_beerName" destination="B3I-pY-SHf" id="pMg-A1-ufM"/>
@@ -311,7 +316,9 @@
                             <outlet property="delegate" destination="HIx-80-GiQ" id="t1N-jX-O4l"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Beer" id="acL-4K-nDP"/>
+                    <navigationItem key="navigationItem" title="Beer" id="acL-4K-nDP">
+                        <barButtonItem key="backBarButtonItem" title="Beer" id="Tis-zR-pXB"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="YzK-tQ-q41" kind="show" identifier="beerToWebSegue" id="bjy-eR-rLY"/>
                     </connections>
@@ -358,7 +365,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WxA-n3-f4c" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="k97-Wd-fxs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="k97-Wd-fxs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="0.93725490199999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
