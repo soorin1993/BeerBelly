@@ -18,6 +18,10 @@ class WebViewController: UIViewController {
         super.viewDidLoad()
         
         var newBeerStyleName = beerStyleName?.replacingOccurrences(of: " ", with: "+")
+        newBeerStyleName = newBeerStyleName?.replacingOccurrences(of: "(", with: "")
+        newBeerStyleName = newBeerStyleName?.replacingOccurrences(of: ")", with: "")
+        newBeerStyleName = newBeerStyleName?.replacingOccurrences(of: "/", with: "")
+        newBeerStyleName = newBeerStyleName?.replacingOccurrences(of: "\"", with: "")
         
         var beerURL = "https://www.google.com/search?q=" + newBeerStyleName!
         print(beerStyleName)

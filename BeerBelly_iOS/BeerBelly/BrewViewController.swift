@@ -45,6 +45,7 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         selectedBrewId = ""
         self.navigationController?.navigationBar.isHidden = false;
+        
     }
     
     override func viewDidLoad() {

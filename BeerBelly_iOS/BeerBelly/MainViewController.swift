@@ -24,7 +24,8 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     var selectedStyleId: String?
     
-    let stateList = ["Alaska",
+    let stateList = ["State",
+                     "Alaska",
                   "Alabama",
                   "Arkansas",
                   "Arizona",
@@ -114,6 +115,7 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                     }
                     
                     //print(jsonObject)
+                    styleList.append("Choose a style")
                     
                     for (key,styleItem):(String, JSON) in jsonObject {
                         let styleName = styleItem["name"].stringValue
@@ -182,6 +184,29 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         drinkButton.layer.cornerRadius = 5
         drinkButton.contentEdgeInsets = UIEdgeInsetsMake(10.0, 30.0, 10.0, 30.0);
+        
+        
+        cityTextField.addTarget(self, action: #selector(cityOrStateTextFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        stateTextField.addTarget(self, action: #selector(cityOrStateTextFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        zipTextField.addTarget(self, action: #selector(zipTextFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+
+        //cityTextField.addTarget(self, action: #selector(MainViewController.cityOrStateTextFieldDidChange(sender:)), for: UIControlEvents.editingChanged)
+
+        
+        //cityTextField.addTarget(self, action: Selector(("cityOrStateTextFieldDidChange:")), for: .editingChanged)
+        //stateTextField.addTarget(self, action: Selector(("cityOrStateTextFieldDidChange:")), for: .editingChanged)
+        //zipTextField.addTarget(self, action: Selector(("zipTextFieldDidChange:")), for: .editingChanged)
+    }
+    
+    func cityOrStateTextFieldDidChange(_ textField: UITextField){
+        
+        print("citystatechange")
+        
+    }
+    
+    func zipTextFieldDidChange(_ textField: UITextField){
+        
+        print("zipchange")
         
     }
 
@@ -270,6 +295,7 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             let brewViewController = segue.destination as! BrewViewController;
             
             brewViewController.selectedStyleId = selectedStyleId
+            print(selectedStyleId)
             brewViewController.cityText = cityTextField.text
             brewViewController.stateText = stateTextField.text
             brewViewController.zipText = zipTextField.text
