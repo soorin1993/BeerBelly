@@ -1,0 +1,204 @@
+<h1 id="alamofire-20-migration-guide">Alamofire 2.0 Migration Guide</h1>
+
+<p>Alamofire 2.0 is the latest major release of Alamofire, an HTTP networking library for iOS, Mac OS X and watchOS written in Swift. As a major release, following Semantic Versioning conventions, 2.0 introduces several API-breaking changes that one should be aware of.</p>
+
+<p>This guide is provided in order to ease the transition of existing applications using Alamofire 1.x to the latest APIs, as well as explain the design and structure of new and changed functionality.</p>
+
+<h2 id="new-requirements">New Requirements</h2>
+
+<p>Alamofire 2.0 officially supports iOS 8+, Mac OS X 10.9+, Xcode 7 and Swift 2.0. If you’d like to use Alamofire in a project targeting iOS 7 and Swift 1.x, use the latest tagged 1.x release.</p>
+
+<hr />
+
+<h2 id="breaking-api-changes">Breaking API Changes</h2>
+
+<h3 id="swift-20">Swift 2.0</h3>
+
+<p>The biggest change between Alamofire 1.x and Alamofire 2.0 is Swift 2.0. Swift 2 brought many new features to take advantage of such as error handling, protocol extensions and availability checking. Other new features such as <code class="highlighter-rouge">guard</code> and <code class="highlighter-rouge">defer</code> do not affect the public APIs, but allowed us to create much cleaner implementations of the same logic. All of the source files, test logic and example code has been updated to reflect the latest Swift 2.0 paradigms.</p>
+
+<blockquote>
+  <p>It is not possible to use Alamofire 2.0 without Swift 2.0.</p>
+</blockquote>
+
+<h3 id="response-serializers">Response Serializers</h3>
+
+<p>The most significant logic change made to Alamofire 2.0 is its new response serialization system leveraging <code class="highlighter-rouge">Result</code> types. Previously in Alamofire 1.x, each response serializer used the same completion handler signature:</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">response</span><span class="p">(</span><span class="nv">completionHandler</span><span class="p">:</span> <span class="p">(</span><span class="kt">NSURLRequest</span><span class="p">,</span> <span class="kt">NSHTTPURLResponse</span><span class="p">?,</span> <span class="kt">AnyObject</span><span class="p">?,</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="k">Self</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nf">response</span><span class="p">(</span><span class="nv">serializer</span><span class="p">:</span> <span class="kt">Request</span><span class="o">.</span><span class="nf">responseDataSerializer</span><span class="p">(),</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="n">completionHandler</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Alamofire 2.0 has redesigned the entire response serialization process to make it much easier to access the original server data without serialization, or serialize the response into a non-optional <code class="highlighter-rouge">Result</code> type defining whether the <code class="highlighter-rouge">Request</code> was successful.</p>
+
+<h4 id="no-response-serialization">No Response Serialization</h4>
+
+<p>The first <code class="highlighter-rouge">response</code> serializer is non-generic and does not process the server data in any way. It merely forwards on the accumulated information from the <code class="highlighter-rouge">NSURLSessionDelegate</code> callbacks.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">response</span><span class="p">(</span>
+	<span class="n">queue</span> <span class="nv">queue</span><span class="p">:</span> <span class="n">dispatch_queue_t</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+	<span class="nv">completionHandler</span><span class="p">:</span> <span class="p">(</span><span class="kt">NSURLRequest</span><span class="p">?,</span> <span class="kt">NSHTTPURLResponse</span><span class="p">?,</span> <span class="kt">NSData</span><span class="p">?,</span> <span class="kt">ErrorType</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span>
+	<span class="o">-&gt;</span> <span class="k">Self</span>
+<span class="p">{</span>
+	<span class="n">delegate</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">addOperationWithBlock</span> <span class="p">{</span>
+		<span class="nf">dispatch_async</span><span class="p">(</span><span class="n">queue</span> <span class="p">??</span> <span class="nf">dispatch_get_main_queue</span><span class="p">())</span> <span class="p">{</span>
+			<span class="nf">completionHandler</span><span class="p">(</span><span class="k">self</span><span class="o">.</span><span class="n">request</span><span class="p">,</span> <span class="k">self</span><span class="o">.</span><span class="n">response</span><span class="p">,</span> <span class="k">self</span><span class="o">.</span><span class="n">delegate</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="k">self</span><span class="o">.</span><span class="n">delegate</span><span class="o">.</span><span class="n">error</span><span class="p">)</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="k">return</span> <span class="k">self</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Another important note of this change is the return type of <code class="highlighter-rouge">data</code> is now an <code class="highlighter-rouge">NSData</code> type. You no longer need to cast the <code class="highlighter-rouge">data</code> parameter from an <code class="highlighter-rouge">AnyObject?</code> to an <code class="highlighter-rouge">NSData?</code>.</p>
+
+<h4 id="generic-response-serializers">Generic Response Serializers</h4>
+
+<p>The second, more powerful response serializer leverages generics along with a <code class="highlighter-rouge">Result</code> type to eliminate the case of the dreaded double optional.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">response</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">ResponseSerializer</span><span class="p">,</span> <span class="kt">V</span> <span class="k">where</span> <span class="kt">T</span><span class="o">.</span><span class="kt">SerializedObject</span> <span class="o">==</span> <span class="kt">V</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="n">queue</span> <span class="nv">queue</span><span class="p">:</span> <span class="n">dispatch_queue_t</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">responseSerializer</span><span class="p">:</span> <span class="kt">T</span><span class="p">,</span>
+    <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">(</span><span class="kt">NSURLRequest</span><span class="p">?,</span> <span class="kt">NSHTTPURLResponse</span><span class="p">?,</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">V</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span>
+    <span class="o">-&gt;</span> <span class="k">Self</span>
+<span class="p">{</span>
+    <span class="n">delegate</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">addOperationWithBlock</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">.</span><span class="kt">SerializedObject</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="n">delegate</span><span class="o">.</span><span class="n">error</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="o">.</span><span class="kt">Failure</span><span class="p">(</span><span class="k">self</span><span class="o">.</span><span class="n">delegate</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">responseSerializer</span><span class="o">.</span><span class="nf">serializeResponse</span><span class="p">(</span><span class="k">self</span><span class="o">.</span><span class="n">request</span><span class="p">,</span> <span class="k">self</span><span class="o">.</span><span class="n">response</span><span class="p">,</span> <span class="k">self</span><span class="o">.</span><span class="n">delegate</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}()</span>
+
+        <span class="nf">dispatch_async</span><span class="p">(</span><span class="n">queue</span> <span class="p">??</span> <span class="nf">dispatch_get_main_queue</span><span class="p">())</span> <span class="p">{</span>
+            <span class="nf">completionHandler</span><span class="p">(</span><span class="k">self</span><span class="o">.</span><span class="n">request</span><span class="p">,</span> <span class="k">self</span><span class="o">.</span><span class="n">response</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="k">self</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h5 id="response-data">Response Data</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kt">Alamofire</span><span class="o">.</span><span class="nf">request</span><span class="p">(</span><span class="o">.</span><span class="kt">GET</span><span class="p">,</span> <span class="s">"http://httpbin.org/get"</span><span class="p">)</span>
+         <span class="o">.</span><span class="n">responseData</span> <span class="p">{</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">result</span> <span class="k">in</span>
+             <span class="nf">print</span><span class="p">(</span><span class="s">"Success: </span><span class="se">\(</span><span class="n">result</span><span class="o">.</span><span class="n">isSuccess</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+             <span class="nf">print</span><span class="p">(</span><span class="s">"Response: </span><span class="se">\(</span><span class="n">result</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+         <span class="p">}</span>
+</code></pre>
+</div>
+
+<h5 id="response-string">Response String</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kt">Alamofire</span><span class="o">.</span><span class="nf">request</span><span class="p">(</span><span class="o">.</span><span class="kt">GET</span><span class="p">,</span> <span class="s">"http://httpbin.org/get"</span><span class="p">)</span>
+         <span class="o">.</span><span class="n">responseString</span> <span class="p">{</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">result</span> <span class="k">in</span>
+             <span class="nf">print</span><span class="p">(</span><span class="s">"Success: </span><span class="se">\(</span><span class="n">result</span><span class="o">.</span><span class="n">isSuccess</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+             <span class="nf">print</span><span class="p">(</span><span class="s">"Response String: </span><span class="se">\(</span><span class="n">result</span><span class="o">.</span><span class="n">value</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+         <span class="p">}</span>
+</code></pre>
+</div>
+
+<h5 id="response-json">Response JSON</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kt">Alamofire</span><span class="o">.</span><span class="nf">request</span><span class="p">(</span><span class="o">.</span><span class="kt">GET</span><span class="p">,</span> <span class="s">"http://httpbin.org/get"</span><span class="p">)</span>
+         <span class="o">.</span><span class="n">responseJSON</span> <span class="p">{</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">result</span> <span class="k">in</span>
+             <span class="nf">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+             <span class="nf">debugPrint</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+         <span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="result-types">Result Types</h4>
+
+<p>The <code class="highlighter-rouge">Result</code> enumeration was added to handle the case of the double optional return type. Previously, the return value and error were both optionals. Checking if one was <code class="highlighter-rouge">nil</code> did not ensure the other was also not <code class="highlighter-rouge">nil</code>. This case has been blogged about many times and can be solved by a <code class="highlighter-rouge">Result</code> type. Alamofire 2.0 brings a <code class="highlighter-rouge">Result</code> type to the response serializers to make it much easier to handle success and failure cases.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">Value</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="kt">Success</span><span class="p">(</span><span class="kt">Value</span><span class="p">)</span>
+    <span class="k">case</span> <span class="kt">Failure</span><span class="p">(</span><span class="kt">NSData</span><span class="p">?,</span> <span class="kt">ErrorType</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>There are also many other convenience computed properties to make accessing the data inside easy. The <code class="highlighter-rouge">Result</code> type also conforms to the <code class="highlighter-rouge">CustomStringConvertible</code> and <code class="highlighter-rouge">CustomDebugStringConvertible</code> protocols to make it easier to debug.</p>
+
+<h4 id="error-types">Error Types</h4>
+
+<p>While Alamofire still only generates <code class="highlighter-rouge">NSError</code> objects, all <code class="highlighter-rouge">Result</code> types have been converted to store <code class="highlighter-rouge">ErrorType</code> objects to allow custom response serializer implementations to use any <code class="highlighter-rouge">ErrorType</code> they wish. This also includes the <code class="highlighter-rouge">ValidationResult</code> and <code class="highlighter-rouge">MultipartFormDataEncodingResult</code> types as well.</p>
+
+<h3 id="urlrequestconvertible">URLRequestConvertible</h3>
+
+<p>In order to make it easier to deal with non-common scenarios, the <code class="highlighter-rouge">URLRequestConvertible</code> protocol now returns an <code class="highlighter-rouge">NSMutableURLRequest</code>. Alamofire 2.0 makes it much easier to customize the URL request after is has been encoded. This should only affect a small amount of users.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">URLRequestConvertible</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">URLRequest</span><span class="p">:</span> <span class="kt">NSMutableURLRequest</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="multipart-form-data">Multipart Form Data</h3>
+
+<p>Encoding <code class="highlighter-rouge">MultipartFormData</code> previous returned an <code class="highlighter-rouge">EncodingResult</code> to encapsulate any possible errors that occurred during encoding. Alamofire 2.0 uses the new Swift 2.0 error handling instead making it easier to use. This change is mostly encapsulated internally and should only affect a very small subset of users.</p>
+
+<hr />
+
+<h2 id="updated-acls-and-new-features">Updated ACLs and New Features</h2>
+
+<h3 id="parameter-encoding">Parameter Encoding</h3>
+
+<h4 id="acl-updates">ACL Updates</h4>
+
+<p>The <code class="highlighter-rouge">ParameterEncoding</code> enumeration implementation was previously hidden behind <code class="highlighter-rouge">internal</code> and <code class="highlighter-rouge">private</code> ACLs. Alamofire 2.0 opens up the <code class="highlighter-rouge">queryComponents</code> and <code class="highlighter-rouge">escape</code> methods to make it much easier to implement <code class="highlighter-rouge">.Custom</code> cases.</p>
+
+<h4 id="encoding-in-the-url">Encoding in the URL</h4>
+
+<p>In the previous versions of Alamofire, <code class="highlighter-rouge">.URL</code> encoding would automatically append the query string to either the URL or HTTP body depending on which HTTP method was set in the <code class="highlighter-rouge">NSURLRequest</code>. While this satisfies the majority of common use cases, it made it quite difficult to append query string parameter to a URL for HTTP methods such as <code class="highlighter-rouge">PUT</code> and <code class="highlighter-rouge">POST</code>. In Alamofire 2.0, we’ve added a second URL encoding case, <code class="highlighter-rouge">.URLEncodedInURL</code>, that always appends the query string to the URL regardless of HTTP method.</p>
+
+<h3 id="server-trust-policies">Server Trust Policies</h3>
+
+<p>In Alamofire 1.x, the <code class="highlighter-rouge">ServerTrustPolicyManager</code> methods were internal making it impossible to implement any custom domain matching behavior. Alamofire 2.0 opens up the internals with a <code class="highlighter-rouge">public</code> ACL allowing more flexible server trust policy matching behavior (i.e. wildcarded domains) through subclassing.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">CustomServerTrustPolicyManager</span><span class="p">:</span> <span class="kt">ServerTrustPolicyManager</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">serverTrustPolicyForHost</span><span class="p">(</span><span class="nv">host</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ServerTrustPolicy</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">policy</span><span class="p">:</span> <span class="kt">ServerTrustPolicy</span><span class="p">?</span>
+
+        <span class="c1">// Implement your custom domain matching behavior...</span>
+
+        <span class="k">return</span> <span class="n">policy</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="download-requests">Download Requests</h3>
+
+<p>The global and <code class="highlighter-rouge">Manager</code> download APIs now support <code class="highlighter-rouge">parameters</code> and <code class="highlighter-rouge">encoding</code> parameters to better support dynamic payloads used in background sessions. Constructing a <code class="highlighter-rouge">download</code> request is now the same as constructing a <code class="highlighter-rouge">data</code> request with the addition of a <code class="highlighter-rouge">destination</code> parameter.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">download</span><span class="p">(</span>
+    <span class="nv">method</span><span class="p">:</span> <span class="kt">Method</span><span class="p">,</span>
+    <span class="n">_</span> <span class="kt">URLString</span><span class="p">:</span> <span class="kt">URLStringConvertible</span><span class="p">,</span>
+    <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">encoding</span><span class="p">:</span> <span class="kt">ParameterEncoding</span> <span class="o">=</span> <span class="o">.</span><span class="kt">URL</span><span class="p">,</span>
+    <span class="nv">headers</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">destination</span><span class="p">:</span> <span class="kt">Request</span><span class="o">.</span><span class="kt">DownloadFileDestination</span><span class="p">)</span>
+    <span class="o">-&gt;</span> <span class="kt">Request</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="kt">Manager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">download</span><span class="p">(</span>
+        <span class="n">method</span><span class="p">,</span>
+        <span class="kt">URLString</span><span class="p">,</span>
+        <span class="nv">parameters</span><span class="p">:</span> <span class="n">parameters</span><span class="p">,</span>
+        <span class="nv">encoding</span><span class="p">:</span> <span class="n">encoding</span><span class="p">,</span>
+        <span class="nv">headers</span><span class="p">:</span> <span class="n">headers</span><span class="p">,</span>
+        <span class="nv">destination</span><span class="p">:</span> <span class="n">destination</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="stream-tasks">Stream Tasks</h3>
+
+<p>Alamofire 2.0 adds support for creating <code class="highlighter-rouge">NSURLSessionStreamTask</code> tasks for iOS 9 and OS X 10.11. It also extends the <code class="highlighter-rouge">SessionDelegate</code> to support all the new <code class="highlighter-rouge">NSURLSessionStreamDelegate</code> APIs.</p>

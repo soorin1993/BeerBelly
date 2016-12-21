@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/exploded-aar/com.android.support.constraint/constraint-layout/1.0.0-beta4/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="662d7533b25a666c649c10a16b42edfb95f25a4f">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support.constraint-constraint-layout-1.0.0-beta4_bb21cb0e11403649725c7469ac0d116ae2d0d71f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8bc45ce1f63d1a391fd38b32a201be5a42f9c95d">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.0.0_153c16b31b4f764e2b934e499906733f2b2d0330/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.0/c4ba5371a29ac9b2ad6129b1d39ea38750043eff/gson-2.8.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c4ba5371a29ac9b2ad6129b1d39ea38750043eff">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/gson-2.8.0_7a5b7df3311cbe222448e6cd9ec47c8e5c47fad2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3b61a70884adaf0be3fc06c70c801e3e6df13133">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_fb91bb609361e56ea4f09be21c82e9a7f9513bec/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.1.0/2de7cd8b95b7021b1d597f049bcb422055119f2c/retrofit-2.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2de7cd8b95b7021b1d597f049bcb422055119f2c">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/retrofit-2.1.0_c1f03990af9f011a86c8836912bc4bb5b321ea85/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.1.0/aa557d71ead91cbf26e0c316a0f593d168303309/converter-gson-2.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="aa557d71ead91cbf26e0c316a0f593d168303309">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/converter-gson-2.1.0_298fc6bde2f2db55f0d1dd3431dbeb5c23676a86/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="665d21a8a069c96b4d9e8b434f5096d865b4e261">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_b9fb84a3f4927b5cdc53a223e0fb09c5fe57bec9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.0.0_6272f84d83107351f94c813243042caaa3fcd8d2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="02dcbc340b1675d13fb88e3d64c8aedd0891df50">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_6989509fff727de3f86560dd1267aa54beefbac9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.6.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="93a0248fe0524b4fa2d16f5f7c3cff8452796454">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-9.6.0_cfeda961ff81af158a014fcbf9a6f5c801e07d25/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ee5faf4dee5b6a4364bf51587871047dde7c703a">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_8c2ed2c2f25dd65de515b6e448fe1643cf643899/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_c3407422132cfd3b04ce486d952c8d7ff4ecb584/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f2e3b9bc1ec25f652e8007ce7774c991e38f6a00">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_28ae67cf88c9a3aaabd4686d90136bfa081e6381/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.0.0/support-annotations-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a22d2cc94da87b254451fa8ed28afc30b4653773">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.0.0_5bc56cda23d9da8e8cc4fc7c8e8f7ddb378e6342/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4ccbcda5c72027c7f7c14be9ff8640d9cb0d8da0">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.0.0_a198e9a44b471c40dd6cc703c719cb7028df3bd1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.3.0/2b802460eea20f8f2ad9c08c74e0f14718e88aa9/okhttp-3.3.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2b802460eea20f8f2ad9c08c74e0f14718e88aa9">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/okhttp-3.3.0_f35870077d8e99bcb70b3e5b8bb38406a362ce17/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="76fb65a4b41ea42dab8a1310ed772a2420c96b52">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-25.0.0_92828870ac5d7f5a28ad2aa213432710807f144c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="07daa0b6e1d455c82a38422ffe287c18823d339a">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.0.0_f78e2ed7b4ea96986c5a46b7f0e77c34ae8c7b93/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5e497d60f0cb6ce87c458ac5420a46d0fed49bd0">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-25.0.0_51c09cc89ce7a909c82d8637a8c3d1c043f551b8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.8.0/5ea7af56cc7c567ed9856d99efb30740e9b17ff/okio-1.8.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="05ea7af56cc7c567ed9856d99efb30740e9b17ff">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/okio-1.8.0_ef3b88da3303f293a1fce340cada6304fb9ba04d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="75b1f366ff0bbc78f8b1f7cf0dc82e7c53afef6a">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.0.0_26a85ad8868755543a09518a785e0b221bd8e77a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d29714cc76b38157e3cbd034c66e1ec808eb4c19">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.0.0_51b07b40fbb77718a39b2b367f748bcdd3e63f67/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/9.6.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ea5537e2a88ce0497d3e2272b1cf93f2e0c77b0d">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-location-9.6.0_ca530280fd97553c967ba1f2ff4133c9003177e4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.6.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f6afcfbf1989631424f9ceaae6ee24777d3cf6ba">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-9.6.0_568297996d868eed6f67b5d251322638ef7d6525/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="53a420cd4f49274db6bd43475f8006ba67ef6bbd">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.0.0_285c608e1aeb2be101def61622834a924fe97655/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/9.6.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7357a05eea2a049c33488c7e8c6f887b3483d4b8">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-maps-9.6.0_08609acaef7f8cddf5306cbe72454f39c4bb4174/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="26674000177e45447a0326a6ad84612761199a13">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.0.0_ea2e97d6a1adaff5ca6aea6eb9b8c49df69fabab/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="31909edf43457658a338c906a3c0d179f35c7f49">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_3c2ff628f974fd7cc0508b08142e3d524d4e88ca/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.6.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="614b2ffd04818e865e1c02cc149c6b92e518e862">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tasks-9.6.0_2f75eefaaa33020f249890ee7c79a994a9b17d9c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/soorinpark/Library/Android/sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.0-beta4/constraint-layout-solver-1.0.0-beta4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0a9cb567dc008f570c28531720168f19148da965">
+        <dex dex="/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/constraint-layout-solver-1.0.0-beta4_2d347413578a71de24b941ae8ceddc7a9b56bdcf/classes.dex" />
+    </item>
+
+</items>

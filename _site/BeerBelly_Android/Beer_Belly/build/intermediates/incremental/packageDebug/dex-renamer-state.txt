@@ -1,0 +1,7 @@
+#Tue Dec 20 15:51:48 MST 2016
+base.0=/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_3c2ff628f974fd7cc0508b08142e3d524d4e88ca
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_6989509fff727de3f86560dd1267aa54beefbac9/classes.dex
+base.1=/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_6989509fff727de3f86560dd1267aa54beefbac9
+file.0=/Users/soorinpark/Work/BeerBelly/BeerBelly_Android/Beer_Belly/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_3c2ff628f974fd7cc0508b08142e3d524d4e88ca/classes.dex

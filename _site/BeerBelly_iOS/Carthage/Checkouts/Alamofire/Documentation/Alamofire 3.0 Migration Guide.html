@@ -1,0 +1,194 @@
+<h1 id="alamofire-30-migration-guide">Alamofire 3.0 Migration Guide</h1>
+
+<p>Alamofire 3.0 is the latest major release of Alamofire, an HTTP networking library for iOS, Mac OS X and watchOS written in Swift. As a major release, following Semantic Versioning conventions, 3.0 introduces several API-breaking changes that one should be aware of.</p>
+
+<p>This guide is provided in order to ease the transition of existing applications using Alamofire 2.x to the latest APIs, as well as explain the design and structure of new and changed functionality.</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>Alamofire 3.0 officially supports iOS 8+, Mac OS X 10.9+, watchOS 2.0, Xcode 7 and Swift 2.0. If you’d like to use Alamofire in a project targeting iOS 7 and Swift 1.x, use the latest tagged 1.x release.</p>
+
+<h2 id="reasons-for-bumping-to-30">Reasons for Bumping to 3.0</h2>
+
+<p>The <a href="https://github.com/Alamofire/Foundation">Alamofire Software Foundation</a> (ASF) tries to do everything possible to avoid MAJOR version bumps. We realize the challenges involved with migrating large projects from one MAJOR version to another. With that said, we also want to make sure we’re always producing the highest quality APIs and features possible.</p>
+
+<p>After releasing Alamofire 2.0, it became clear that the response serialization system still had some room for improvement. After much debate, we decided to strictly follow semver and move forward with all the core logic changes becoming Alamofire 3.0. We’ve also made some fairly significant changes that should give us more flexibility moving forward to help avoid the need for MAJOR version bumps to maintain backwards compatibility.</p>
+
+<h2 id="benefits-of-upgrading">Benefits of Upgrading</h2>
+
+<p>The benefits of upgrading can be summarized as follows:</p>
+
+<ul>
+  <li>No more casting a response serializer <code class="highlighter-rouge">error</code> from an <code class="highlighter-rouge">ErrorType</code> to an <code class="highlighter-rouge">NSError</code>.</li>
+  <li>Original server data is now ALWAYS returned in all response serializers regardless of whether the result was a <code class="highlighter-rouge">.Success</code> or <code class="highlighter-rouge">.Failure</code>.</li>
+  <li>Custom response serializers are now ALWAYS called regardless of whether an <code class="highlighter-rouge">error</code> occurred.</li>
+  <li>Custom response serializers are now passed in the <code class="highlighter-rouge">error</code> allowing you to switch between different parsing schemes if necessary.</li>
+  <li>Custom response serializers can now wrap up any Alamofire <code class="highlighter-rouge">NSError</code> into a <code class="highlighter-rouge">CustomError</code> type of your choosing.</li>
+  <li><code class="highlighter-rouge">Manager</code> initialization can now accept custom <code class="highlighter-rouge">NSURLSession</code> or <code class="highlighter-rouge">SessionDelegate</code> objects using dependency injection.</li>
+</ul>
+
+<hr />
+
+<h2 id="breaking-api-changes">Breaking API Changes</h2>
+
+<p>Alamofire 3.0 contains some breaking API changes to the foundational classes supporting the response serialization system. It is important to understand how these changes affect the common usage patterns.</p>
+
+<h3 id="result-type">Result Type</h3>
+
+<p>The <code class="highlighter-rouge">Result</code> type was introduced in Alamofire 2.0 as a single generic parameter with the following signature:</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">Value</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="kt">Success</span><span class="p">(</span><span class="kt">Value</span><span class="p">)</span>
+    <span class="k">case</span> <span class="kt">Failure</span><span class="p">(</span><span class="kt">NSData</span><span class="p">?,</span> <span class="kt">ErrorType</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>While this was a significant improvement on the behavior of Alamofire 1.0, there was still room for improvement. By defining the <code class="highlighter-rouge">.Failure</code> case to take an <code class="highlighter-rouge">ErrorType</code>, all consumers needed to cast the <code class="highlighter-rouge">ErrorType</code> to some concrete object such as an <code class="highlighter-rouge">NSError</code> before being able to interact with it. This was certainly not ideal. Additionally, by only allowing the <code class="highlighter-rouge">NSData?</code> from the server to be appended in a <code class="highlighter-rouge">.Failure</code> case, it was not possible to access the original server data in a <code class="highlighter-rouge">.Success</code> case.</p>
+
+<p>In Alamofire 3.0, the <code class="highlighter-rouge">Result</code> type has been redesigned to be a double generic type that does not store the <code class="highlighter-rouge">NSData?</code> in the <code class="highlighter-rouge">.Failure</code> case.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">Value</span><span class="p">,</span> <span class="kt">Error</span><span class="p">:</span> <span class="kt">ErrorType</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="kt">Success</span><span class="p">(</span><span class="kt">Value</span><span class="p">)</span>
+    <span class="k">case</span> <span class="kt">Failure</span><span class="p">(</span><span class="kt">Error</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>These changes allow Alamofire to return the original server data in both cases. It also removes the requirement of having to cast the <code class="highlighter-rouge">ErrorType</code> when working with the <code class="highlighter-rouge">.Failure</code> case error object.</p>
+
+<h3 id="response">Response</h3>
+
+<p>In order to avoid constantly having to change the response serializer completion closure signatures, Alamofire 3.0 introduces a <code class="highlighter-rouge">Response</code> struct. All response serializers (with the exception of <code class="highlighter-rouge">response</code>) return a generic <code class="highlighter-rouge">Response</code> struct.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Response</span><span class="o">&lt;</span><span class="kt">Value</span><span class="p">,</span> <span class="kt">Error</span><span class="p">:</span> <span class="kt">ErrorType</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="c1">/// The URL request sent to the server.</span>
+    <span class="kd">public</span> <span class="k">let</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">NSURLRequest</span><span class="p">?</span>
+
+    <span class="c1">/// The server's response to the URL request.</span>
+    <span class="kd">public</span> <span class="k">let</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">NSHTTPURLResponse</span><span class="p">?</span>
+
+    <span class="c1">/// The data returned by the server.</span>
+    <span class="kd">public</span> <span class="k">let</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">NSData</span><span class="p">?</span>
+
+    <span class="c1">/// The result of response serialization.</span>
+    <span class="kd">public</span> <span class="k">let</span> <span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">Value</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This unifies the signature of all response serializer completion closures by only needing to specify a single parameter rather than three or four. If another major release of Alamofire needs to modify the signature, thankfully the number of parameters in all response serializers will NOT need to change. Given the fact that the Swift compiler can present some fairly misleading compiler errors when the arguments are not correct, this should help alleviate some painful updates between MAJOR version bumps of Alamofire.</p>
+
+<h3 id="response-serializers">Response Serializers</h3>
+
+<p>The biggest change in Alamofire 3.0 are the response serializers. They are now powered by the new <code class="highlighter-rouge">Response</code> struct and updated <code class="highlighter-rouge">Result</code> type. These two generic classes make it VERY easy to interact with the response serializers in a consistent, type-safe manner.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kt">Alamofire</span><span class="o">.</span><span class="nf">request</span><span class="p">(</span><span class="o">.</span><span class="kt">GET</span><span class="p">,</span> <span class="s">"http://httpbin.org/get"</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="s">"foo"</span><span class="p">:</span> <span class="s">"bar"</span><span class="p">])</span>
+         <span class="o">.</span><span class="n">responseJSON</span> <span class="p">{</span> <span class="n">response</span> <span class="k">in</span>
+         	 <span class="nf">debugPrint</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>     <span class="c1">// prints detailed description of all response properties</span>
+
+             <span class="nf">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">request</span><span class="p">)</span>  <span class="c1">// original URL request</span>
+             <span class="nf">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">response</span><span class="p">)</span> <span class="c1">// URL response</span>
+             <span class="nf">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>     <span class="c1">// server data</span>
+             <span class="nf">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>   <span class="c1">// result of response serialization</span>
+
+             <span class="k">if</span> <span class="k">let</span> <span class="nv">JSON</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">value</span> <span class="p">{</span>
+                 <span class="nf">print</span><span class="p">(</span><span class="s">"JSON: </span><span class="se">\(</span><span class="kt">JSON</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+             <span class="p">}</span>
+         <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Besides the single response parameter in the completion closure, the other major callouts are that the original server data is always available whether the <code class="highlighter-rouge">Result</code> was a <code class="highlighter-rouge">.Success</code> or <code class="highlighter-rouge">.Failure</code>. Additionally, both the <code class="highlighter-rouge">value</code> and <code class="highlighter-rouge">error</code> of the <code class="highlighter-rouge">Result</code> type are strongly typed objects thanks to the power of generics. All default response serializer errors will be an <code class="highlighter-rouge">NSError</code> type. Custom response serializers can specify any custom <code class="highlighter-rouge">ErrorType</code>.</p>
+
+<h4 id="response-serializer-type">Response Serializer Type</h4>
+
+<p>For those wishing to create custom response serializer types, you’ll need to familiarize yourself with the new <code class="highlighter-rouge">ResponseSerializerType</code> protocol and generic <code class="highlighter-rouge">ResponseSerializer</code> struct.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ResponseSerializerType</span> <span class="p">{</span>
+    <span class="c1">/// The type of serialized object to be created by this `ResponseSerializerType`.</span>
+    <span class="kd">typealias</span> <span class="kt">SerializedObject</span>
+
+    <span class="c1">/// The type of error to be created by this `ResponseSerializer` if serialization fails.</span>
+    <span class="kd">typealias</span> <span class="kt">ErrorObject</span><span class="p">:</span> <span class="kt">ErrorType</span>
+
+    <span class="cm">/**
+        A closure used by response handlers that takes a request, response, data and error and returns a result.
+    */</span>
+    <span class="k">var</span> <span class="nv">serializeResponse</span><span class="p">:</span> <span class="p">(</span><span class="kt">NSURLRequest</span><span class="p">?,</span> <span class="kt">NSHTTPURLResponse</span><span class="p">?,</span> <span class="kt">NSData</span><span class="p">?,</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">SerializedObject</span><span class="p">,</span> <span class="kt">ErrorObject</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>All the possible information about the <code class="highlighter-rouge">Request</code> is now passed into the <code class="highlighter-rouge">serializeResponse</code> closure. In Alamofire 3.0, the <code class="highlighter-rouge">serializeResponse</code> closure is ALWAYS called whether an error occurred or not. This is for several reasons.</p>
+
+<ol>
+  <li>Passing the error into the response serializer allows the implementation to switch parsing schemes based on what error occurred. For example, some APIs will return different payload schemas when certain errors occur. The new design allows you to switch on the error type and use different parsing logic.</li>
+  <li>Any error produced by Alamofire will always be an <code class="highlighter-rouge">NSError</code>. If your custom response serializer returns <code class="highlighter-rouge">CustomError</code> types, then the <code class="highlighter-rouge">NSError</code> returned by Alamofire must be converted into a <code class="highlighter-rouge">CustomError</code> type. This makes it MUCH easier to wrap Alamofire errors in your own <code class="highlighter-rouge">CustomError</code> type objects.
+ &gt; This is also required for all the generics logic to work properly.</li>
+</ol>
+
+<h3 id="validation-result">Validation Result</h3>
+
+<p>The <code class="highlighter-rouge">ValidationResult</code> enumeration in Alamofire 3.0 has been updated to take an <code class="highlighter-rouge">NSError</code> in the <code class="highlighter-rouge">.Failure</code> case. The reasoning for this change is that all Alamofire errors generated need to be <code class="highlighter-rouge">NSError</code> types. If not, it introduces the need to cast all error objects coming from Alamofire at the response serializer level.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ValidationResult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="kt">Success</span>
+    <span class="k">case</span> <span class="kt">Failure</span><span class="p">(</span><span class="kt">NSError</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<blockquote>
+  <p>If you are extending the <code class="highlighter-rouge">Request</code> type in any way that can produce an error, that error always needs to be of type <code class="highlighter-rouge">NSError</code>. If you’d like to wrap the error into a <code class="highlighter-rouge">CustomError</code> type, it should be wrapped in a custom response serializer implementation.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="new-features">New Features</h2>
+
+<h3 id="dependency-injection">Dependency Injection</h3>
+
+<p>Alamofire 3.0 leverages <a href="https://en.wikipedia.org/wiki/Dependency_injection">dependency injection</a> to allow some powerful new customizations to take place for the URL session and delegate.</p>
+
+<h4 id="session-delegate">Session Delegate</h4>
+
+<p>In previous versions of Alamofire, the <code class="highlighter-rouge">SessionDelegate</code> was automatically created by the <code class="highlighter-rouge">Manager</code> instance. While this is convenient, it can be problematic for background sessions. One may need to hook up the task override closures before instantiating the URL session. Otherwise the URL session delegate could be called before the task override closures are able to be set.</p>
+
+<p>In Alamofire 3.0, the <code class="highlighter-rouge">Manager</code> initializer adds the ability to provide a custom <code class="highlighter-rouge">SessionDelegate</code> object with the task override closures already set using dependency injection. This greatly increases the flexibility of Alamofire in regards to background sessions.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span>
+    <span class="nv">configuration</span><span class="p">:</span> <span class="kt">NSURLSessionConfiguration</span> <span class="o">=</span> <span class="kt">NSURLSessionConfiguration</span><span class="o">.</span><span class="nf">defaultSessionConfiguration</span><span class="p">(),</span>
+    <span class="nv">delegate</span><span class="p">:</span> <span class="kt">SessionDelegate</span> <span class="o">=</span> <span class="kt">SessionDelegate</span><span class="p">(),</span>
+    <span class="nv">serverTrustPolicyManager</span><span class="p">:</span> <span class="kt">ServerTrustPolicyManager</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="n">delegate</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="kt">NSURLSession</span><span class="p">(</span><span class="nv">configuration</span><span class="p">:</span> <span class="n">configuration</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="n">delegate</span><span class="p">,</span> <span class="nv">delegateQueue</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+
+    <span class="nf">commonInit</span><span class="p">(</span><span class="nv">serverTrustPolicyManager</span><span class="p">:</span> <span class="n">serverTrustPolicyManager</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="url-session">URL Session</h4>
+
+<p>Alamofire 3.0 also adds the ability to use dependency injection to provide a custom <code class="highlighter-rouge">NSURLSession</code> to the <code class="highlighter-rouge">Manager</code> instance. This provides complete control over the URL session initialization if you need it allowing <code class="highlighter-rouge">NSURLSession</code> subclasses for various kinds of testing and DVR implementations.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">?(</span>
+    <span class="nv">session</span><span class="p">:</span> <span class="kt">NSURLSession</span><span class="p">,</span>
+    <span class="nv">delegate</span><span class="p">:</span> <span class="kt">SessionDelegate</span><span class="p">,</span>
+    <span class="nv">serverTrustPolicyManager</span><span class="p">:</span> <span class="kt">ServerTrustPolicyManager</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="n">delegate</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="n">session</span>
+
+    <span class="k">guard</span> <span class="n">delegate</span> <span class="o">===</span> <span class="n">session</span><span class="o">.</span><span class="n">delegate</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">nil</span> <span class="p">}</span>
+
+    <span class="nf">commonInit</span><span class="p">(</span><span class="nv">serverTrustPolicyManager</span><span class="p">:</span> <span class="n">serverTrustPolicyManager</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<blockquote>
+  <p>We’re very excited to see what the community comes up with given these new possibilities with Alamofire 3.0.</p>
+</blockquote>

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="styles">
+        <item>Choose a style</item>
+        <item>Classic English-Style Pale Ale</item>
+        <item>English-Style India Pale Ale</item>
+        <item>Ordinary Bitter</item>
+        <item>Special Bitter or Best Bitter</item>
+        <item>Extra Special Bitter</item>
+        <item>English-Style Summer Ale</item>
+        <item>Scottish-Style Light Ale</item>
+        <item>Scottish-Style Heavy Ale</item>
+        <item>Scottish-Style Export Ale</item>
+        <item>English-Style Pale Mild Ale</item>
+        <item>English-Style Dark Mild Ale</item>
+        <item>English-Style Brown Ale</item>
+        <item>Old Ale</item>
+        <item>Strong Ale</item>
+        <item>Scotch Ale</item>
+        <item>British-Style Imperial Stout</item>
+        <item>British-Style Barley Wine Ale</item>
+        <item>Brown Porter</item>
+        <item>Robust Porter</item>
+        <item>Sweet or Cream Stout</item>
+        <item>Oatmeal Stout</item>
+        <item>Irish-Style Red Ale</item>
+        <item>Classic Irish-Style Dry Stout</item>
+        <item>Foreign (Export)-Style Stout</item>
+        <item>American-Style Pale Ale</item>
+        <item>Fresh "Wet" Hop Ale</item>
+        <item>Pale American-Belgo-Style Ale</item>
+        <item>Dark American-Belgo-Style Ale</item>
+        <item>American-Style Strong Pale Ale</item>
+        <item>American-Style India Pale Ale</item>
+        <item>Imperial or Double India Pale Ale</item>
+        <item>American-Style Amber/Red Ale</item>
+        <item>Imperial Red Ale</item>
+        <item>American-Style Barley Wine Ale</item>
+        <item>American-Style Wheat Wine Ale</item>
+        <item>Golden or Blonde Ale</item>
+        <item>American-Style Brown Ale</item>
+        <item>Smoke Porter</item>
+        <item>Brett Beer</item>
+        <item>American-Style Sour Ale</item>
+        <item>American-Style Black Ale</item>
+        <item>American-Style Stout</item>
+        <item>American-Style Imperial Stout</item>
+        <item>Specialty Stouts</item>
+        <item>German-Style Ku00f6lsch / Ku00f6ln-Style Ku00f6lsch</item>
+        <item>Berliner-Style Weisse (Wheat)</item>
+        <item>Leipzig-Style Gose</item>
+        <item>South German-Style Hefeweizen / Hefeweissbier</item>
+        <item>South German-Style Kristall Weizen / Kristall Weissbier</item>
+        <item>German-Style Leichtes Weizen / Weissbier</item>
+        <item>South German-Style Bernsteinfarbenes Weizen / Weissbier</item>
+        <item>South German-Style Dunkel Weizen / Dunkel Weissbier</item>
+        <item>South German-Style Weizenbock / Weissbock</item>
+        <item>Bamberg-Style Weiss (Smoke) Rauchbier (Dunkel or Helles)</item>
+        <item>German-Style Altbier</item>
+        <item>Kellerbier (Cellar beer) or Zwickelbier - Ale</item>
+        <item>Belgian-Style Flanders Oud Bruin or Oud Red Ales</item>
+        <item>Belgian-Style Dubbel</item>
+        <item>Belgian-Style Tripel</item>
+        <item>Belgian-Style Quadrupel</item>
+        <item>Belgian-Style Blonde Ale</item>
+        <item>Belgian-Style Pale Ale</item>
+        <item>Belgian-Style Pale Strong Ale</item>
+        <item>Belgian-Style Dark Strong Ale</item>
+        <item>Belgian-Style White (or Wit) / Belgian-Style Wheat</item>
+        <item>Belgian-Style Lambic</item>
+        <item>Belgian-Style Gueuze Lambic</item>
+        <item>Belgian-Style Fruit Lambic</item>
+        <item>Belgian-Style Table Beer</item>
+        <item>Other Belgian-Style Ales</item>
+        <item>French-Style Biu00e8re de Garde</item>
+        <item>French &amp; Belgian-Style Saison</item>
+        <item>International-Style Pale Ale</item>
+        <item>Australian-Style Pale Ale</item>
+        <item>German-Style Pilsener</item>
+        <item>Bohemian-Style Pilsener</item>
+        <item>German-Style Leichtbier</item>
+        <item>Mu00fcnchner (Munich)-Style Helles</item>
+        <item>Dortmunder / European-Style Export</item>
+        <item>Vienna-Style Lager</item>
+        <item>German-Style Mu00e4rzen</item>
+        <item>German-Style Oktoberfest / Wiesen (Meadow)</item>
+        <item>European-Style Dark / Mu00fcnchner Dunkel</item>
+        <item>German-Style Schwarzbier</item>
+        <item>Bamberg-Style Mu00e4rzen Rauchbier</item>
+        <item>Bamberg-Style Helles Rauchbier</item>
+        <item>Bamberg-Style Bock Rauchbier</item>
+        <item>Traditional German-Style Bock</item>
+        <item>German-Style Heller Bock/Maibock</item>
+        <item>German-Style Doppelbock</item>
+        <item>German-Style Eisbock</item>
+        <item>Kellerbier (Cellar beer) or Zwickelbier - Lager</item>
+        <item>American-Style Lager</item>
+        <item>American-Style Light (Low Calorie) Lager</item>
+        <item>American-Style Low-Carbohydrate Light Lager</item>
+        <item>American-Style Amber (Low Calorie) Lager</item>
+        <item>American-Style Premium Lager</item>
+        <item>American-Style Pilsener</item>
+        <item>American-Style Ice Lager</item>
+        <item>American-Style Malt Liquor</item>
+        <item>American-Style Amber Lager</item>
+        <item>American-Style Mu00e4rzen / Oktoberfest</item>
+        <item>American-Style Dark Lager</item>
+        <item>Baltic-Style Porter</item>
+        <item>Australasian, Latin American or Tropical-Style Light Lager</item>
+        <item>International-Style Pilsener</item>
+        <item>Dry Lager</item>
+        <item>Session Beer</item>
+        <item>American-Style Cream Ale or Lager</item>
+        <item>California Common Beer</item>
+        <item>Ginjo Beer or Sake-Yeast Beer</item>
+        <item>Light American Wheat Ale or Lager with Yeast</item>
+        <item>Light American Wheat Ale or Lager without Yeast</item>
+        <item>Fruit Wheat Ale or Lager with or without Yeast</item>
+        <item>Dark American Wheat Ale or Lager with Yeast</item>
+        <item>Dark American Wheat Ale or Lager without Yeast</item>
+        <item>Rye Ale or Lager with or without Yeast</item>
+        <item>German-Style Rye Ale (Roggenbier) with or without Yeast</item>
+        <item>Fruit Beer</item>
+        <item>Field Beer</item>
+        <item>Pumpkin Beer</item>
+        <item>Chocolate / Cocoa-Flavored Beer</item>
+        <item>Coffee-Flavored Beer</item>
+        <item>Herb and Spice Beer</item>
+        <item>Specialty Beer</item>
+        <item>Specialty Honey Lager or Ale</item>
+        <item>Gluten-Free Beer</item>
+        <item>Indigenous Beer (Lager or Ale)</item>
+        <item>Smoke Beer (Lager or Ale)</item>
+        <item>Experimental Beer (Lager or Ale)</item>
+        <item>Historical Beer</item>
+        <item>Wood- and Barrel-Aged Beer</item>
+        <item>Wood- and Barrel-Aged Pale to Amber Beer</item>
+        <item>Wood- and Barrel-Aged Dark Beer</item>
+        <item>Wood- and Barrel-Aged Strong Beer</item>
+        <item>Wood- and Barrel-Aged Sour Beer</item>
+        <item>Aged Beer (Ale or Lager)</item>
+        <item>Other Strong Ale or Lager</item>
+        <item>Non-Alcoholic (Beer) Malt Beverages</item>
+        <item>Dry Mead</item>
+        <item>Semi-Sweet Mead</item>
+        <item>Sweet Mead</item>
+        <item>Cyser (Apple Melomel)</item>
+        <item>Pyment (Grape Melomel)</item>
+        <item>Other Fruit Melomel</item>
+        <item>Metheglin</item>
+        <item>Braggot</item>
+        <item>Open Category Mead</item>
+        <item>Common Cider</item>
+        <item>English Cider</item>
+        <item>French Cider</item>
+        <item>Common Perry</item>
+        <item>Traditional Perry</item>
+        <item>New England Cider</item>
+        <item>Fruit Cider</item>
+        <item>Apple Wine</item>
+        <item>Other Specialty Cider or Perry</item>
+        <item>American-Style Imperial Porter</item>
+        <item>Adambier</item>
+        <item>Grodziskie</item>
+        <item>Flavored Malt Beverage</item>
+        <item>Energy Enhanced Malt Beverage</item>
+        <item>Double Red Ale</item>
+        <item>Session India Pale Ale</item>
+        <item>Contemporary Gose</item>
+        <item>Dutch-Style Kuit, Kuyt or Koyt</item>
+        <item>Belgian-style Fruit Beer</item>
+        <item>Chili Pepper Beer</item>
+        <item>Mixed Culture Brett Beer</item>
+        <item>Wild Beer</item>
+    </string-array>
+
+    <string-array name="states">
+        <item>Choose a State</item>
+        <item>Alabama</item>
+        <item>Arkansas</item>
+        <item>Arizona</item>
+        <item>Alaska</item>
+        <item>California</item>
+        <item>Colorado</item>
+        <item>Connecticut</item>
+        <item>Delaware</item>
+        <item>Florida</item>
+        <item>Georgia</item>
+        <item>Hawaii</item>
+        <item>Idaho</item>
+        <item>Illinois</item>
+        <item>Indiana</item>
+        <item>Iowa</item>
+        <item>Kansas</item>
+        <item>Kentucky</item>
+        <item>Louisiana</item>
+        <item>Maine</item>
+        <item>Maryland</item>
+        <item>Massachusetts</item>
+        <item>Michigan</item>
+        <item>Minnesota</item>
+        <item>Mississippi</item>
+        <item>Missouri</item>
+        <item>Montana</item>
+        <item>Nebraska</item>
+        <item>Nevada</item>
+        <item>New Hampshire</item>
+        <item>New Jersey</item>
+        <item>New Mexico</item>
+        <item>New York</item>
+        <item>North Carolina</item>
+        <item>North Dakota</item>
+        <item>Ohio</item>
+        <item>Oklahoma</item>
+        <item>Oregon</item>
+        <item>Pennsylvania</item>
+        <item>Rhode Island</item>
+        <item>South Carolina</item>
+        <item>South Dakota</item>
+        <item>Tennessee</item>
+        <item>Texas</item>
+        <item>Utah</item>
+        <item>Vermont</item>
+        <item>Virginia</item>
+        <item>Washington</item>
+        <item>West Virginia</item>
+        <item>Wisconsin</item>
+        <item>Wyoming</item>
+    </string-array>
+</resources>
