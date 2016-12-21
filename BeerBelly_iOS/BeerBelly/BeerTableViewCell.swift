@@ -18,6 +18,8 @@ class BeerTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        //cell_beerDesc.lineBreakMode = .byWordWrapping // or NSLineBreakMode.ByWordWrapping
+        cell_beerDesc.numberOfLines = 0
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
