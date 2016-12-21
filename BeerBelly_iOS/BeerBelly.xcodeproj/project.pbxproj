@@ -14,8 +14,6 @@
 		6A1249CB1DDE3AA0001EA943 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A1249C91DDE3AA0001EA943 /* LaunchScreen.storyboard */; };
 		6A4F52951E0063A000E90BB1 /* BeerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4F52941E0063A000E90BB1 /* BeerTableViewCell.swift */; };
 		6A4F52971E00695E00E90BB1 /* BeerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4F52961E00695E00E90BB1 /* BeerTableViewController.swift */; };
-		6A9938361DEB9F27006E5F2C /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF5EF931DEB98D700D542A5 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6A9938381DEB9F27006E5F2C /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF5EF901DEB982100D542A5 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6A99383B1DEBA4B7006E5F2C /* BrewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A99383A1DEBA4B7006E5F2C /* BrewViewController.swift */; };
 		6A9B03A01DECB89C001F4AFB /* Brewery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B039F1DECB89C001F4AFB /* Brewery.swift */; };
 		6A9B03A21DECB8AC001F4AFB /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B03A11DECB8AC001F4AFB /* Beer.swift */; };
@@ -23,9 +21,13 @@
 		6AB441161DEB8C7A00D13EBB /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6AB441141DEB8C7100D13EBB /* OpenSans-Regular.ttf */; };
 		6AC3A3A41DEBE8D800BD0522 /* BrewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC3A3A31DEBE8D800BD0522 /* BrewTableViewCell.swift */; };
 		6AD35EEF1E00AEA40049177F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD35EEE1E00AEA40049177F /* WebViewController.swift */; };
-		6AF5EF921DEB98D700D542A5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF5EF901DEB982100D542A5 /* Alamofire.framework */; };
-		6AF5EF941DEB98D700D542A5 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF5EF931DEB98D700D542A5 /* SwiftyJSON.framework */; };
 		6AF5EF961DEB999500D542A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AF5EF951DEB999500D542A5 /* Assets.xcassets */; };
+		6AFF5C651E0A04A300920372 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFF5C631E0A04A300920372 /* Alamofire.framework */; };
+		6AFF5C661E0A04A300920372 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFF5C641E0A04A300920372 /* SwiftyJSON.framework */; };
+		6AFF5C671E0A066100920372 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFF5C631E0A04A300920372 /* Alamofire.framework */; };
+		6AFF5C681E0A066100920372 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFF5C631E0A04A300920372 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6AFF5C691E0A066100920372 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFF5C641E0A04A300920372 /* SwiftyJSON.framework */; };
+		6AFF5C6A1E0A066100920372 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFF5C641E0A04A300920372 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,8 +37,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6A9938361DEB9F27006E5F2C /* SwiftyJSON.framework in Embed Frameworks */,
-				6A9938381DEB9F27006E5F2C /* Alamofire.framework in Embed Frameworks */,
+				6AFF5C6A1E0A066100920372 /* SwiftyJSON.framework in Embed Frameworks */,
+				6AFF5C681E0A066100920372 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -60,9 +62,9 @@
 		6AB441141DEB8C7100D13EBB /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		6AC3A3A31DEBE8D800BD0522 /* BrewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrewTableViewCell.swift; sourceTree = "<group>"; };
 		6AD35EEE1E00AEA40049177F /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		6AF5EF901DEB982100D542A5 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		6AF5EF931DEB98D700D542A5 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		6AF5EF951DEB999500D542A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6AFF5C631E0A04A300920372 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		6AFF5C641E0A04A300920372 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		BE4551893FAB14D1D6CAA8CF /* Pods-BeerBelly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerBelly.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeerBelly/Pods-BeerBelly.release.xcconfig"; sourceTree = "<group>"; };
 		EF3B13BD68630069E7336C12 /* Pods-BeerBelly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerBelly.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeerBelly/Pods-BeerBelly.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,9 +74,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6AF5EF941DEB98D700D542A5 /* SwiftyJSON.framework in Frameworks */,
-				6AF5EF921DEB98D700D542A5 /* Alamofire.framework in Frameworks */,
+				6AFF5C651E0A04A300920372 /* Alamofire.framework in Frameworks */,
+				6AFF5C661E0A04A300920372 /* SwiftyJSON.framework in Frameworks */,
 				32CB08B710EAE05CF11747A0 /* libPods-BeerBelly.a in Frameworks */,
+				6AFF5C671E0A066100920372 /* Alamofire.framework in Frameworks */,
+				6AFF5C691E0A066100920372 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +106,7 @@
 		6A1249BF1DDE3AA0001EA943 /* BeerBelly */ = {
 			isa = PBXGroup;
 			children = (
+				6A1249CC1DDE3AA0001EA943 /* Info.plist */,
 				6A1249C01DDE3AA0001EA943 /* AppDelegate.swift */,
 				6AF5EF951DEB999500D542A5 /* Assets.xcassets */,
 				6AB441131DEB8C7100D13EBB /* Bungee-Regular.ttf */,
@@ -111,7 +116,6 @@
 				6A9B039D1DECB7F7001F4AFB /* ViewModel */,
 				6A1249C41DDE3AA0001EA943 /* Main.storyboard */,
 				6A1249C91DDE3AA0001EA943 /* LaunchScreen.storyboard */,
-				6A1249CC1DDE3AA0001EA943 /* Info.plist */,
 			);
 			path = BeerBelly;
 			sourceTree = "<group>";
@@ -148,8 +152,8 @@
 		6AF5EF8F1DEB982100D542A5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6AF5EF931DEB98D700D542A5 /* SwiftyJSON.framework */,
-				6AF5EF901DEB982100D542A5 /* Alamofire.framework */,
+				6AFF5C631E0A04A300920372 /* Alamofire.framework */,
+				6AFF5C641E0A04A300920372 /* SwiftyJSON.framework */,
 				53042A1CC73610B4B19C31CD /* libPods-BeerBelly.a */,
 			);
 			name = Frameworks;

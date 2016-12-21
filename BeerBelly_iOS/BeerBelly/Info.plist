@@ -39,8 +39,16 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+    
+    <key>NSLocationUsageDescription</key>
+    <string>This app uses location data</string>
+        
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>This app uses location data when in use</string>
+    
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+    
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Regular.ttf</string>
