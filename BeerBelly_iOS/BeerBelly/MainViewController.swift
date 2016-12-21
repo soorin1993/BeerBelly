@@ -106,11 +106,6 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                     jsonObject = jsonObject["data"]
                     
                     if jsonObject == JSON.null {
-//                        let alert = UIAlertController(title: "Error", message: "No breweries were found.", preferredStyle: UIAlertControllerStyle.alert)
-//                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
-//                            self.navigationController?.popViewController(animated: true)
-//                        }))
-//                        self.present(alert, animated: true, completion: nil)
                         print("styles couldnt load")
                     }
                     
@@ -125,11 +120,6 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 }
                 
             case .failure(let error):
-//                let alert = UIAlertController(title: "Error", message: String(describing: error), preferredStyle: UIAlertControllerStyle.alert)
-//                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
-//                    self.navigationController?.popViewController(animated: true)
-//                }))
-//                self.present(alert, animated: true, completion: nil)
                 print("style failure")
             }
         }
@@ -186,28 +176,37 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         drinkButton.contentEdgeInsets = UIEdgeInsetsMake(10.0, 30.0, 10.0, 30.0);
         
         
-        cityTextField.addTarget(self, action: #selector(cityOrStateTextFieldDidChange(_:)), for: UIControlEvents.editingChanged)
-        stateTextField.addTarget(self, action: #selector(cityOrStateTextFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        cityTextField.addTarget(self, action: #selector(cityTextFieldDidChange(_:)), for: UIControlEvents.editingChanged)
         zipTextField.addTarget(self, action: #selector(zipTextFieldDidChange(_:)), for: UIControlEvents.editingChanged)
-
-        //cityTextField.addTarget(self, action: #selector(MainViewController.cityOrStateTextFieldDidChange(sender:)), for: UIControlEvents.editingChanged)
-
-        
-        //cityTextField.addTarget(self, action: Selector(("cityOrStateTextFieldDidChange:")), for: .editingChanged)
-        //stateTextField.addTarget(self, action: Selector(("cityOrStateTextFieldDidChange:")), for: .editingChanged)
-        //zipTextField.addTarget(self, action: Selector(("zipTextFieldDidChange:")), for: .editingChanged)
     }
     
-    func cityOrStateTextFieldDidChange(_ textField: UITextField){
+    func cityTextFieldDidChange(_ textField: UITextField){
         
-        print("citystatechange")
+        if cityTextField.text! == "" {
+            zipTextField.isUserInteractionEnabled = true
+            zipTextField.alpha = 1
+        }
+        else {
+            zipTextField.isUserInteractionEnabled = false
+            zipTextField.alpha = 0.5
+        }
         
     }
     
     func zipTextFieldDidChange(_ textField: UITextField){
         
-        print("zipchange")
-        
+        if zipTextField.text! == "" {
+            cityTextField.isUserInteractionEnabled = true
+            stateTextField.isUserInteractionEnabled = true
+            cityTextField.alpha = 1
+            stateTextField.alpha = 1
+        }
+        else {
+            cityTextField.isUserInteractionEnabled = false
+            stateTextField.isUserInteractionEnabled = false
+            cityTextField.alpha = 0.5
+            stateTextField.alpha = 0.5
+        }
     }
 
     deinit {
@@ -215,13 +214,11 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     
-    func donePicker() {
-        
+    func donePicker(sender: UITextField) {
         styleTextField.resignFirstResponder()
-        cityTextField.resignFirstResponder()
         stateTextField.resignFirstResponder()
+        cityTextField.resignFirstResponder()
         zipTextField.resignFirstResponder()
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool // called when 'return' key pressed. return false to ignore.
@@ -264,6 +261,16 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         if pickerView.tag == 2 {
             stateTextField.text = stateList[row]
+            
+            if stateTextField.text! == "State" {
+                zipTextField.isUserInteractionEnabled = true
+                zipTextField.alpha = 1
+            }
+            else {
+                zipTextField.isUserInteractionEnabled = false
+                zipTextField.alpha = 0.5
+            }
+            
         }
     }
 

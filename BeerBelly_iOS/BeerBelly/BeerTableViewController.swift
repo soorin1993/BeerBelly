@@ -45,7 +45,6 @@ class BeerTableViewController: UITableViewController {
         beerStyleList.append(beerStyleName)
         cell.cell_beerStyle.setTitle(beerStyleName, for: .normal)
 
-        //var buttonTitle = cell.cell_beerStyle.titleLabel?.text
         cell.cell_beerStyle.tag = beerStyleId!
         cell.cell_beerStyle.addTarget(self, action: #selector(openURL), for: .touchUpInside)
 
@@ -53,13 +52,8 @@ class BeerTableViewController: UITableViewController {
 
         let templateImage = UIImage(named:"yes_beer")?.withRenderingMode(.alwaysTemplate)
         let srmVal = beerData?[indexPath.row].beerSRM
-        //print(getBeerSRMColor(SRM: srmVal!))
         cell.cell_beerIcon.image = templateImage
         cell.cell_beerIcon.tintColor = getBeerSRMColor(SRM: srmVal!)
-        
-        //cell.cell_beerIcon.image = templateImage
-        //cell.cell_beerIcon.tintColor = UIColor.blue
-        print(cell.cell_beerIcon.tintColor)
         
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor(red: 0.878, green: 0.686, blue: 0.345, alpha: 1)
