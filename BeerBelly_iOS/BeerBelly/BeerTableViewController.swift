@@ -51,11 +51,80 @@ class BeerTableViewController: UITableViewController {
 
         cell.cell_beerDesc.text = beerData?[indexPath.row].beerDesc
 
+        let templateImage = UIImage(named:"yes_beer")?.withRenderingMode(.alwaysTemplate)
+        let srmVal = beerData?[indexPath.row].beerSRM
+        //print(getBeerSRMColor(SRM: srmVal!))
+        cell.cell_beerIcon.image = templateImage
+        cell.cell_beerIcon.tintColor = getBeerSRMColor(SRM: srmVal!)
+        
+        //cell.cell_beerIcon.image = templateImage
+        //cell.cell_beerIcon.tintColor = UIColor.blue
+        print(cell.cell_beerIcon.tintColor)
+        
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor(red: 0.878, green: 0.686, blue: 0.345, alpha: 1)
         cell.selectedBackgroundView = bgColorView
         
         return cell
+    }
+    
+    func getBeerSRMColor(SRM: Int) -> UIColor {
+        
+        var beerColor = UIColor()
+        
+        if (SRM == 0 || SRM == 1 || SRM == 2) {
+            beerColor = UIColor.paleStrawColor()
+        }
+        
+        else if (SRM == 3) {
+            beerColor = UIColor.strawColor()
+        }
+        
+        else if (SRM == 4) {
+            beerColor = UIColor.paleGoldColor()
+        }
+        
+        else if (SRM == 5 || SRM == 6) {
+            beerColor = UIColor.deepGoldColor()
+        }
+        
+        else if (SRM == 7 || SRM == 8 || SRM == 9) {
+            beerColor = UIColor.paleAmberColor()
+        }
+        
+        else if (SRM == 10 || SRM == 11 || SRM == 12) {
+            beerColor = UIColor.mediumAmberColor()
+        }
+        
+        else if (SRM == 13 || SRM == 14 || SRM == 15) {
+            beerColor = UIColor.deepAmberColor()
+        }
+        
+        else if (SRM == 16 || SRM == 17 || SRM == 18) {
+            beerColor = UIColor.amberBrownColor()
+        }
+
+        else if (SRM == 19 || SRM == 20) {
+            beerColor = UIColor.beerBrownColor()
+        }
+        
+        else if (SRM >= 21 && SRM <= 24) {
+            beerColor = UIColor.rubyBrownColor()
+        }
+        
+        else if (SRM >= 25 && SRM <= 30) {
+            beerColor = UIColor.deepBrownColor()
+        }
+            
+        else if (SRM >= 31 && SRM <= 40) {
+            beerColor = UIColor.beerBlackColor()
+        }
+            
+        else {
+            return UIColor.gray
+        }
+        
+        return beerColor
     }
 
     func openURL(sender: UIButton) {
@@ -73,44 +142,70 @@ class BeerTableViewController: UITableViewController {
             webViewController.beerStyleName = selectedBeerName
         }
     }
+}
+
+public extension UIImage {
+    public convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
+        let rect = CGRect(origin: .zero, size: size)
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
+        color.setFill()
+        UIRectFill(rect)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        guard let cgImage = image?.cgImage else { return nil }
+        self.init(cgImage: cgImage)
+    }
+}
+
+public extension UIColor {
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    //SRM beer color
+    class func paleStrawColor() -> UIColor {
+        return UIColor(red:255.0/255.0, green:255.0/255.0, blue:69.0/255.0, alpha:1.0)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     
-
+    class func strawColor() -> UIColor {
+        return UIColor(red:255.0/255.0, green:233.0/255.0, blue:62.0/255.0, alpha:1.0)
+    }
     
-
+    class func paleGoldColor() -> UIColor {
+        return UIColor(red:254/255.0, green:216/255.0, blue:73/255.0, alpha:1.0)
+    }
+    
+    class func deepGoldColor() -> UIColor {
+        return UIColor(red:255/255.0, green:168/255.0, blue:70/255.0, alpha:1.0)
+    }
+    
+    class func paleAmberColor() -> UIColor {
+        return UIColor(red:244/255.0, green:159/255.0, blue:68/255.0, alpha:1.0)
+    }
+    
+    class func mediumAmberColor() -> UIColor {
+        return UIColor(red:215/255.0, green:127/255.0, blue:89/255.0, alpha:1.0)
+    }
+    
+    class func deepAmberColor() -> UIColor {
+        return UIColor(red:148/255.0, green:82/255.0, blue:58/255.0, alpha:1.0)
+    }
+    
+    class func amberBrownColor() -> UIColor {
+        return UIColor(red:128/255.0, green:69/255.0, blue:65/255.0, alpha:1.0)
+    }
+    
+    class func beerBrownColor() -> UIColor {
+        return UIColor(red:91/255.0, green:52/255.0, blue:47/255.0, alpha:1.0)
+    }
+    
+    class func rubyBrownColor() -> UIColor {
+        return UIColor(red:76/255.0, green:59/255.0, blue:43/255.0, alpha:1.0)
+    }
+    
+    class func deepBrownColor() -> UIColor {
+        return UIColor(red:56/255.0, green:48/255.0, blue:46/255.0, alpha:1.0)
+    }
+    
+    class func beerBlackColor() -> UIColor {
+        return UIColor(red:49/255.0, green:48/255.0, blue:44/255.0, alpha:1.0)
+    }
 }

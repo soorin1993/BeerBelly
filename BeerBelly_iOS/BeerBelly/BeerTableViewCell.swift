@@ -13,6 +13,7 @@ class BeerTableViewCell: UITableViewCell {
     @IBOutlet weak var cell_beerName: UILabel!
     @IBOutlet weak var cell_beerStyle: UIButton!
     @IBOutlet weak var cell_beerDesc: UILabel!
+    @IBOutlet weak var cell_beerIcon: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

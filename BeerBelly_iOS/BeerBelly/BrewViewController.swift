@@ -243,7 +243,16 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
                             let beerDesc = beerItem["description"].stringValue
                             let beerStyleId = beerItem["styleId"].stringValue
                             
-                            let beer = Beer(beerId: beerId, beerName: beerName, beerStyle: beerStyleId, beerDesc: beerDesc)
+                            let minSRM = Int(beerItem["style"]["srmMin"].stringValue)
+                            let maxSRM = Int(beerItem["style"]["srmMax"].stringValue)
+                            
+                            var beerSRM = 100
+                            
+                            if (minSRM != nil && maxSRM != nil) {
+                                beerSRM = minSRM! + (maxSRM! - minSRM!)/2
+                            }
+                            
+                            let beer = Beer(beerId: beerId, beerName: beerName, beerStyle: beerStyleId, beerDesc: beerDesc, beerSRM: beerSRM)
                             
                             brewBeerList.append(beer)
                          }
