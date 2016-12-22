@@ -27,7 +27,7 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
     var markers = [GMSMarker]()
     var bounds = GMSCoordinateBounds()
     var currentLocation: CLLocation!
-
+    var currentLocationReceived: Bool = false
     
     var selectedStyleId: String!
     var cityText: String?
@@ -60,7 +60,7 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.estimatedRowHeight = 100; //Set this to any value that works for you.
         
         createBrewURL()
-        getBrewData()
+        //getBrewData()
     
     }
     
@@ -86,9 +86,6 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
         mapView.animate(to: camera)
         self.locationManager.stopUpdatingLocation()
         locationManager.requestWhenInUseAuthorization()
-
-        getCurrentLocZip()
-
     }
     
     func getCurrentLocZip() {
@@ -102,6 +99,17 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if let zip = placeMark.addressDictionary!["ZIP"] as? String {
                     self.zipText = zip
                 }
+                
+                if let city = placeMark.addressDictionary!["City"] as? String {
+                    self.cityText = city
+                }
+                
+                if let state = placeMark.addressDictionary!["State"] as? String {
+                    self.stateText = stateDic[state]
+                }
+                
+                self.currentLocationReceived = true
+
             })
         
         }
@@ -129,14 +137,26 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
     func createBrewURL() {
         
         if zipText == "" && cityText == "" && stateText == "" {
-            self.brewURL = baseURL + "locations?key=" + BREWERYDB_API_KEY + "&postalCode=" + self.zipText!
+            getCurrentLocZip()
+            if currentLocationReceived == true {
+                brewURL = baseURL + "locations?key=" + BREWERYDB_API_KEY + "&postalCode=" + zipText!
+                getBrewData()
+            }
+            else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                    self.brewURL = baseURL + "locations?key=" + BREWERYDB_API_KEY + "&postalCode=" + self.zipText!
+                    self.getBrewData()
+                })
+            }
         }
         else if zipText != "" {
             brewURL = baseURL + "locations?key=" + BREWERYDB_API_KEY + "&postalCode=" + zipText!
+            getBrewData()
         }
         else {
             if cityText != "" && stateText != "" {
             brewURL = baseURL + "locations?key=" + BREWERYDB_API_KEY + "&locality=" + cityText! + "&region=" + stateText!
+                getBrewData()
             }
         }
     }
@@ -159,11 +179,23 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
                     jsonObject = jsonObject["data"]
                     
                     if jsonObject == JSON.null {
-                        let alert = UIAlertController(title: "Error", message: "No breweries were found.", preferredStyle: UIAlertControllerStyle.alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
-                            self.navigationController?.popViewController(animated: true)
+                        if self.currentLocationReceived == true {
+                            let alert = UIAlertController(title: "Error", message: "Welp no breweries in your zipcode. Doing a city wide search instead.", preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+                                print(self.cityText!)
+                                print(self.stateText!)
+                                self.brewURL = baseURL + "locations?key=" + BREWERYDB_API_KEY + "&locality=" + self.cityText! + "&region=" + self.stateText!
+                                self.getBrewData()
                             }))
-                        self.present(alert, animated: true, completion: nil)
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                        else {
+                            let alert = UIAlertController(title: "Error", message: "No breweries were found.", preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+                                self.navigationController?.popViewController(animated: true)
+                                }))
+                            self.present(alert, animated: true, completion: nil)
+                        }
                     }
                     
                     for (key,brewItem):(String, JSON) in jsonObject {

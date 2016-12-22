@@ -12,6 +12,64 @@ import SwiftyJSON
 
 var styleList = [String]()
 var availableList = [String]()
+let stateDic = ["State": "",
+                "AK": "Alaska",
+                "AL": "Alabama",
+                "AR": "Arkansas",
+                "AS": "American Samoa",
+                "AZ": "Arizona",
+                "CA": "California",
+                "CO": "Colorado",
+                "CT": "Connecticut",
+                "DC": "District of Columbia",
+                "DE": "Delaware",
+                "FL": "Florida",
+                "GA": "Georgia",
+                "GU": "Guam",
+                "HI": "Hawaii",
+                "IA": "Iowa",
+                "ID": "Idaho",
+                "IL": "Illinois",
+                "IN": "Indiana",
+                "KS": "Kansas",
+                "KY": "Kentucky",
+                "LA": "Louisiana",
+                "MA": "Massachusetts",
+                "MD": "Maryland",
+                "ME": "Maine",
+                "MI": "Michigan",
+                "MN": "Minnesota",
+                "MO": "Missouri",
+                "MP": "Northern Mariana Islands",
+                "MS": "Mississippi",
+                "MT": "Montana",
+                "NA": "National",
+                "NC": "North Carolina",
+                "ND": "North Dakota",
+                "NE": "Nebraska",
+                "NH": "New Hampshire",
+                "NJ": "New Jersey",
+                "NM": "New Mexico",
+                "NV": "Nevada",
+                "NY": "New York",
+                "OH": "Ohio",
+                "OK": "Oklahoma",
+                "OR": "Oregon",
+                "PA": "Pennsylvania",
+                "PR": "Puerto Rico",
+                "RI": "Rhode Island",
+                "SC": "South Carolina",
+                "SD": "South Dakota",
+                "TN": "Tennessee",
+                "TX": "Texas",
+                "UT": "Utah",
+                "VA": "Virginia",
+                "VI": "Virgin Islands",
+                "VT": "Vermont",
+                "WA": "Washington",
+                "WI": "Wisconsin",
+                "WV": "West Virginia",
+                "WY": "Wyoming"]
 
 class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
@@ -24,58 +82,7 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var drinkButton: UIButton!
     
     var selectedStyleId: String?
-    
-    let stateList = ["State",
-                     "Alaska",
-                  "Alabama",
-                  "Arkansas",
-                  "Arizona",
-                  "California",
-                  "Colorado",
-                  "Connecticut",
-                  "Delaware",
-                  "Florida",
-                  "Georgia",
-                  "Hawaii",
-                  "Iowa",
-                  "Idaho",
-                  "Illinois",
-                  "Indiana",
-                  "Kansas",
-                  "Kentucky",
-                  "Louisiana",
-                  "Massachusetts",
-                  "Maryland",
-                  "Maine",
-                  "Michigan",
-                  "Minnesota",
-                  "Missouri",
-                  "Mississippi",
-                  "Montana",
-                  "North Carolina",
-                  "North Dakota",
-                  "Nebraska",
-                  "New Hampshire",
-                  "New Jersey",
-                  "New Mexico",
-                  "Nevada",
-                  "New York",
-                  "Ohio",
-                  "Oklahoma",
-                  "Oregon",
-                  "Pennsylvania",
-                  "Rhode Island",
-                  "South Carolina",
-                  "South Dakota",
-                  "Tennessee",
-                  "Texas",
-                  "Utah",
-                  "Virginia",
-                  "Vermont",
-                  "Washington",
-                  "Wisconsin",
-                  "West Virginia",
-                  "Wyoming"]
+    var stateList = [String]()
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true;
@@ -89,6 +96,10 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         zipTextField.delegate = self
         
         super.viewDidLoad()
+        
+        stateList = Array(stateDic.values)
+        stateList = stateList.sorted { $0.localizedCaseInsensitiveCompare($1) == ComparisonResult.orderedAscending }
+
         
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
         
@@ -266,7 +277,7 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         zipTextField.resignFirstResponder()
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool // called when 'return' key pressed. return false to ignore.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool // called when "return" key pressed. return false to ignore.
     {
         textField.resignFirstResponder()
         return true
