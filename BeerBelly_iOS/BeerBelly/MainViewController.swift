@@ -90,6 +90,8 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     override func viewDidLoad() {
         
+        view.endEditing(true)
+        
         styleTextField.delegate = self
         cityTextField.delegate = self
         stateTextField.delegate = self
@@ -166,7 +168,8 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
 
         
         
-        let phColor = UIColor(red:0.90, green:0.73, blue:0.44, alpha:1.0)
+        //let phColor = UIColor(red:0.90, green:0.73, blue:0.44, alpha:1.0)
+        let phColor = UIColor.amberBrownColor()
         
         styleTextField.attributedPlaceholder = NSAttributedString(string:"Choose a style",
                                                                attributes:[NSForegroundColorAttributeName: phColor])
@@ -218,6 +221,15 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         cityTextField.addTarget(self, action: #selector(cityTextFieldDidChange(_:)), for: UIControlEvents.editingChanged)
         zipTextField.addTarget(self, action: #selector(zipTextFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        
+        cityTextField.addTarget(self, action: #selector(textFieldTouched(_:)), for: UIControlEvents.touchDown)
+        stateTextField.addTarget(self, action: #selector(textFieldTouched(_:)), for: UIControlEvents.touchDown)
+        zipTextField.addTarget(self, action: #selector(textFieldTouched(_:)), for: UIControlEvents.touchDown)
+
+    }
+    
+    func textFieldTouched(_ textField: UITextField) {
+        view.endEditing(true)
     }
     
     func cityTextFieldDidChange(_ textField: UITextField){
@@ -262,7 +274,8 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             UIView.performWithoutAnimation {
                 drinkButton.setTitle("DRINK!", for: .normal)
                 drinkButton.layoutIfNeeded()
-            }        }
+            }
+        }
     }
 
     deinit {
@@ -271,11 +284,15 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     
     func donePicker(sender: UITextField) {
+        /*
         styleTextField.resignFirstResponder()
         stateTextField.resignFirstResponder()
         cityTextField.resignFirstResponder()
         zipTextField.resignFirstResponder()
-    }
+        */
+        view.endEditing(true)
+
+ }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool // called when "return" key pressed. return false to ignore.
     {

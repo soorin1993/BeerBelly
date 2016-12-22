@@ -39,11 +39,11 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="drinkButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGL-s9-wYP">
                                 <rect key="frame" x="115" y="619" width="146" height="32"/>
-                                <color key="backgroundColor" red="0.25490196079999999" green="0.054901960780000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.75735330581665039" green="0.17868652939796448" blue="0.0039626229554414749" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Bungee-Regular" family="Bungee" pointSize="20"/>
-                                <color key="tintColor" red="0.69803921570000005" green="0.1058823529" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.75735431909561157" green="0.17871913313865662" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="MY LOCATION">
-                                    <color key="titleColor" red="1" green="0.93725490199999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="1" green="0.95075196027755737" blue="0.83344131708145142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="JQw-j1-m5m" kind="show" identifier="mainToBrewSegue" id="UEq-1d-lFK"/>
@@ -52,20 +52,20 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEER BELLY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0JD-ED-KyM">
                                 <rect key="frame" x="75" y="264" width="225" height="35"/>
                                 <fontDescription key="fontDescription" name="Bungee-Regular" family="Bungee" pointSize="35"/>
-                                <color key="textColor" red="0.25490196079999999" green="0.054901960780000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="0.95075196027755737" blue="0.83344131708145142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="stateTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cj7-GU-g7i">
                                 <rect key="frame" x="46" y="514" width="283" height="30"/>
-                                <color key="backgroundColor" red="0.55294117649999996" green="0.1019607843" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="textColor" red="1" green="0.93725490199999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.95075196027755737" blue="0.83344131708145142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.75735330581665039" green="0.17868652939796448" blue="0.0039626229554414749" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="zipTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zipcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pIV-Y6-8iE">
                                 <rect key="frame" x="46" y="559" width="283" height="30"/>
-                                <color key="backgroundColor" red="0.55294117649999996" green="0.1019607843" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="textColor" red="1" green="0.93725490199999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.95075196027755737" blue="0.83344131708145142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.75735330581665039" green="0.17868652939796448" blue="0.0039626229554414749" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
@@ -83,20 +83,20 @@
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="styleTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose a style" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Giu-55-JQ9">
                                 <rect key="frame" x="46" y="369" width="283" height="30"/>
-                                <color key="backgroundColor" red="0.55294117649999996" green="0.1019607843" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="textColor" red="1" green="0.93725490199999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.95075196027755737" blue="0.83344131708145142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.60674697160720825" green="0.14485517144203186" blue="0.013825245201587677" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cityTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bxx-I3-9qI">
                                 <rect key="frame" x="46" y="469" width="283" height="30"/>
-                                <color key="backgroundColor" red="0.55294117649999996" green="0.1019607843" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="textColor" red="1" green="0.93725490199999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.95075196027755737" blue="0.83344131708145142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.75735330581665039" green="0.17868652939796448" blue="0.0039626229554414749" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.93725490199999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.32534635066986084" green="0.080883003771305084" blue="0.00063429109286516905" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="pIV-Y6-8iE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="3iy-gV-fA8"/>
                             <constraint firstItem="Giu-55-JQ9" firstAttribute="top" secondItem="e1b-Df-1Me" secondAttribute="bottom" constant="20" id="9vB-Rq-QBK"/>
@@ -158,7 +158,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="121" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="teh-IW-hzW">
                                 <rect key="frame" x="0.0" y="314" width="375" height="353"/>
-                                <color key="backgroundColor" red="0.87843137979999997" green="0.68627452850000004" blue="0.34509804840000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.32532370090484619" green="0.084950782358646393" blue="0.00043527645175345242" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.87843137979999997" green="0.68627452850000004" blue="0.34509804840000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -241,14 +241,24 @@
                                     <outlet property="delegate" destination="JQw-j1-m5m" id="30O-PE-vc9"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="MKP-8G-ACU">
+                                <rect key="frame" x="162.5" y="308" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="NjH-oK-sUi"/>
+                                    <constraint firstAttribute="height" constant="50" id="c9X-M7-XJZ"/>
+                                </constraints>
+                                <color key="color" red="1" green="0.95075196027755737" blue="0.83344131708145142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="teh-IW-hzW" secondAttribute="trailing" id="2fe-Ak-7nA"/>
                             <constraint firstItem="teh-IW-hzW" firstAttribute="leading" secondItem="Kef-Kg-wfD" secondAttribute="leading" id="Bcm-O3-W7L"/>
+                            <constraint firstItem="MKP-8G-ACU" firstAttribute="centerX" secondItem="Kef-Kg-wfD" secondAttribute="centerX" id="DlZ-KW-Euk"/>
                             <constraint firstAttribute="trailing" secondItem="Csr-LK-Z7Z" secondAttribute="trailing" id="VDm-pX-qZm"/>
                             <constraint firstItem="Csr-LK-Z7Z" firstAttribute="leading" secondItem="Kef-Kg-wfD" secondAttribute="leading" id="WiE-qQ-V4t"/>
                             <constraint firstItem="GYd-VD-dd5" firstAttribute="top" secondItem="teh-IW-hzW" secondAttribute="bottom" id="adi-l1-adY"/>
+                            <constraint firstItem="MKP-8G-ACU" firstAttribute="centerY" secondItem="Kef-Kg-wfD" secondAttribute="centerY" id="eM6-v7-zSj"/>
                             <constraint firstItem="Csr-LK-Z7Z" firstAttribute="top" secondItem="yGS-4J-NMo" secondAttribute="bottom" id="uPK-cH-ThK"/>
                             <constraint firstItem="teh-IW-hzW" firstAttribute="top" secondItem="Csr-LK-Z7Z" secondAttribute="bottom" id="zqn-Wx-oQO"/>
                         </constraints>
@@ -257,6 +267,7 @@
                         <barButtonItem key="backBarButtonItem" title="Breweries" id="Y7X-7E-lJq"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="MKP-8G-ACU" id="f54-yb-uKA"/>
                         <outlet property="gmapView" destination="Csr-LK-Z7Z" id="92r-cv-ibq"/>
                         <outlet property="tableView" destination="teh-IW-hzW" id="0ZU-s9-bjc"/>
                         <segue destination="HIx-80-GiQ" kind="show" identifier="brewToBeerSegue" id="ZHm-ab-BXi"/>
@@ -273,7 +284,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="123" sectionHeaderHeight="28" sectionFooterHeight="28" id="gtQ-kI-KTC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.87843137979999997" green="0.68627452850000004" blue="0.34509804840000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.32532370090484619" green="0.084950782358646393" blue="0.00043527645175345242" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="separatorColor" red="0.87843137979999997" green="0.68627452850000004" blue="0.34509804840000002" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
@@ -394,7 +405,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WxA-n3-f4c" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="k97-Wd-fxs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="k97-Wd-fxs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="0.93725490199999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>

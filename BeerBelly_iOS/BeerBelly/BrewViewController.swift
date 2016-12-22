@@ -20,6 +20,7 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var gmapView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     let locationManager = CLLocationManager()
     var mapView: GMSMapView!
@@ -53,6 +54,10 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
             
         createMap()
         
+        activityIndicatorView.startAnimating()
+        view.bringSubview(toFront: activityIndicatorView)
+
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -61,7 +66,8 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         createBrewURL()
         //getBrewData()
-    
+        
+        tableView.tableFooterView = UIView()  // it's just 1 line, awesome!
     }
     
     //maps
@@ -240,6 +246,8 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
                         self.tableView.reloadData()
                     }
                     self.fitToMarkers()
+                    self.activityIndicatorView.stopAnimating()
+                    self.activityIndicatorView.hidesWhenStopped = true
                     
                 }
             
@@ -252,7 +260,6 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
 
             }
         }
-
     }
     
     func getBeerData(brewId: String, beerURL: String) {
