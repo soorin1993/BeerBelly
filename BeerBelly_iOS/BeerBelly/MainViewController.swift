@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 var styleList = [String]()
+var availableList = [String]()
 
 class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
@@ -93,7 +94,7 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         NotificationCenter.default.addObserver(self, selector:  #selector(MainViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
-        var styleURL = "http://api.brewerydb.com/v2/styles?key=" + BREWERYDB_API_KEY
+        var styleURL = baseURL + "styles?key=" + BREWERYDB_API_KEY
         
         Alamofire.request(styleURL).responseJSON { response in
             
@@ -115,6 +116,34 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                     for (key,styleItem):(String, JSON) in jsonObject {
                         let styleName = styleItem["name"].stringValue
                         styleList.append(styleName)
+                    }
+                    
+                }
+                
+            case .failure(let error):
+                print("style failure")
+            }
+        }
+        
+        var availableURL = baseURL + "menu/beer-availability?key=" + BREWERYDB_API_KEY
+        Alamofire.request(availableURL).responseJSON { response in
+            
+            switch response.result {
+            case .success:
+                
+                if let jsonData = response.result.value {
+                    
+                    var jsonObject = JSON(jsonData)
+                    jsonObject = jsonObject["data"]
+                    
+                    if jsonObject == JSON.null {
+                        print("styles couldnt load")
+                    }
+                    
+                    availableList.append("n/a")
+                    for (key,availItem):(String, JSON) in jsonObject {
+                        let availName = availItem["name"].stringValue
+                        availableList.append(availName)
                     }
                     
                 }
@@ -185,10 +214,19 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         if cityTextField.text! == "" {
             zipTextField.isUserInteractionEnabled = true
             zipTextField.alpha = 1
+            UIView.performWithoutAnimation {
+                drinkButton.setTitle("MY LOCATION", for: .normal)
+                drinkButton.layoutIfNeeded()
+            }
+
         }
         else {
             zipTextField.isUserInteractionEnabled = false
             zipTextField.alpha = 0.5
+            UIView.performWithoutAnimation {
+                drinkButton.setTitle("DRINK!", for: .normal)
+                drinkButton.layoutIfNeeded()
+            }
         }
         
     }
@@ -200,13 +238,20 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             stateTextField.isUserInteractionEnabled = true
             cityTextField.alpha = 1
             stateTextField.alpha = 1
+            UIView.performWithoutAnimation {
+                drinkButton.setTitle("MY LOCATION", for: .normal)
+                drinkButton.layoutIfNeeded()
+            }
         }
         else {
             cityTextField.isUserInteractionEnabled = false
             stateTextField.isUserInteractionEnabled = false
             cityTextField.alpha = 0.5
             stateTextField.alpha = 0.5
-        }
+            UIView.performWithoutAnimation {
+                drinkButton.setTitle("DRINK!", for: .normal)
+                drinkButton.layoutIfNeeded()
+            }        }
     }
 
     deinit {
@@ -265,10 +310,18 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             if stateTextField.text! == "State" {
                 zipTextField.isUserInteractionEnabled = true
                 zipTextField.alpha = 1
+                UIView.performWithoutAnimation {
+                    drinkButton.setTitle("MY LOCATION", for: .normal)
+                    drinkButton.layoutIfNeeded()
+                }
             }
             else {
                 zipTextField.isUserInteractionEnabled = false
                 zipTextField.alpha = 0.5
+                UIView.performWithoutAnimation {
+                    drinkButton.setTitle("DRINK!", for: .normal)
+                    drinkButton.layoutIfNeeded()
+                }
             }
             
         }
@@ -300,24 +353,20 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "mainToBrewSegue" {
             let brewViewController = segue.destination as! BrewViewController;
-            
             brewViewController.selectedStyleId = selectedStyleId
-            print(selectedStyleId)
             brewViewController.cityText = cityTextField.text
-            brewViewController.stateText = stateTextField.text
+            var stateText = stateTextField.text?.replacingOccurrences(of: " ", with: "+")
+
+            brewViewController.stateText = stateText
             brewViewController.zipText = zipTextField.text
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    
-    
     func keyboardWillShow(notification: NSNotification) {
-        print("up")
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0{
                 self.view.frame.origin.y -= keyboardSize.height
@@ -326,7 +375,6 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        print("down")
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0{
                 self.view.frame.origin.y += keyboardSize.height

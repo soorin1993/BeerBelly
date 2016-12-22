@@ -11,8 +11,8 @@ import GoogleMaps
 import Alamofire
 import SwiftyJSON
 
-let BREWERYDB_API_KEY = "d8604749e9fbcca807d465e753a72478" //dev
-//let BREWERYDB_API_KEY = "fd9b5015d33721dd7bf301ea019b2fb9" //release
+//let BREWERYDB_API_KEY = "d8604749e9fbcca807d465e753a72478" //dev
+let BREWERYDB_API_KEY = "fd9b5015d33721dd7bf301ea019b2fb9" //release
 
 let baseURL = "http://api.brewerydb.com/v2/"
 
@@ -168,6 +168,10 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
                     
                     for (key,brewItem):(String, JSON) in jsonObject {
                         
+                        if brewItem["isClosed"].stringValue == "Y" {
+                            continue
+                        }
+                        
                         let brewStreet = brewItem["streetAddress"].stringValue
                         let brewCity = brewItem["locality"].stringValue
                         let brewState = brewItem["region"].stringValue
@@ -237,6 +241,11 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
                         
                         var brewBeerList = [Beer]()
                         for (key,beerItem):(String, JSON) in jsonObject {
+                            
+                            /*
+                            if beerItem["availableId"].intValue == 3 {
+                                continue
+                            }*/
                             
                             let beerId = beerItem["id"].stringValue
                             let beerName = beerItem["name"].stringValue

@@ -39,15 +39,20 @@ class BeerTableViewController: UITableViewController {
         
         cell.cell_beerName.text = beerData?[indexPath.row].beerName
         
-        var beerStyleId = Int((beerData?[indexPath.row].beerStyle)!)
-        var beerStyleName = styleList[beerStyleId!]
+        if let beerStyleId = Int((beerData?[indexPath.row].beerStyle)!) {
+            
+            var beerStyleName = styleList[beerStyleId]
+            beerStyleList.append(beerStyleName)
+            cell.cell_beerStyle.setTitle(beerStyleName, for: .normal)
+            
+            cell.cell_beerStyle.tag = beerStyleId
+            cell.cell_beerStyle.addTarget(self, action: #selector(openURL), for: .touchUpInside)
 
-        beerStyleList.append(beerStyleName)
-        cell.cell_beerStyle.setTitle(beerStyleName, for: .normal)
-
-        cell.cell_beerStyle.tag = beerStyleId!
-        cell.cell_beerStyle.addTarget(self, action: #selector(openURL), for: .touchUpInside)
-
+        }
+        else {
+            cell.cell_beerStyle.setTitle("Style Unknown", for: .normal)
+        }
+        
         cell.cell_beerDesc.text = beerData?[indexPath.row].beerDesc
 
         let templateImage = UIImage(named:"yes_beer")?.withRenderingMode(.alwaysTemplate)
