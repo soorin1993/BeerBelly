@@ -200,7 +200,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_beer" translatesAutoresizingMaskIntoConstraints="NO" id="sXU-LC-abx">
-                                                    <rect key="frame" x="307" y="53" width="50" height="50"/>
+                                                    <rect key="frame" x="307" y="52" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="U76-wa-Jc6"/>
                                                         <constraint firstAttribute="height" constant="50" id="c4p-d3-gdp"/>
@@ -242,7 +242,7 @@
                                 </connections>
                             </tableView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="MKP-8G-ACU">
-                                <rect key="frame" x="162.5" y="308" width="50" height="50"/>
+                                <rect key="frame" x="163" y="308" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="NjH-oK-sUi"/>
                                     <constraint firstAttribute="height" constant="50" id="c9X-M7-XJZ"/>
@@ -265,6 +265,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Breweries" id="LJn-NF-Sre">
                         <barButtonItem key="backBarButtonItem" title="Breweries" id="Y7X-7E-lJq"/>
+                        <barButtonItem key="rightBarButtonItem" title="Info" id="uZt-2D-HxD">
+                            <connections>
+                                <segue destination="rAh-fE-ftu" kind="show" id="sr3-fh-qdu"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicatorView" destination="MKP-8G-ACU" id="f54-yb-uKA"/>
@@ -276,6 +281,203 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LSP-Le-JTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1804" y="37.331334332833585"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="EEn-0i-3jc">
+            <objects>
+                <viewController id="rAh-fE-ftu" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uN2-3M-sO0"/>
+                        <viewControllerLayoutGuide type="bottom" id="tYi-Bj-HAP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DmI-3q-Gb0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="beer_icon" translatesAutoresizingMaskIntoConstraints="NO" id="QQe-EZ-qlf">
+                                <rect key="frame" x="137" y="84" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="MQQ-i1-fmc"/>
+                                    <constraint firstAttribute="height" constant="100" id="dMM-R8-KvR"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beer Belly" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJZ-xm-U2u">
+                                <rect key="frame" x="107" y="194" width="161" height="25"/>
+                                <fontDescription key="fontDescription" name="Bungee-Regular" family="Bungee" pointSize="25"/>
+                                <color key="textColor" red="1" green="0.95075196029999998" blue="0.83344131710000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4A-4i-46x">
+                                <rect key="frame" x="91" y="229" width="192" height="41"/>
+                                <string key="text">Copyright © 2016 Soo Park 
+All Rights Reserved</string>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                <color key="textColor" red="0.87843137979999997" green="0.68627452850000004" blue="0.34509804840000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIa-vg-Xz0">
+                                <rect key="frame" x="141.5" y="290" width="93" height="32"/>
+                                <fontDescription key="fontDescription" name="Bungee-Regular" family="Bungee" pointSize="20"/>
+                                <state key="normal" title="License">
+                                    <color key="titleColor" red="1" green="0.95075196029999998" blue="0.83344131710000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="FcV-m8-dyk" kind="show" id="d5G-t0-nha"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e8P-CW-MWQ">
+                                <rect key="frame" x="96.5" y="342" width="182" height="32"/>
+                                <fontDescription key="fontDescription" name="Bungee-Regular" family="Bungee" pointSize="20"/>
+                                <state key="normal" title="Privacy Policy">
+                                    <color key="titleColor" red="1" green="0.95075196029999998" blue="0.83344131710000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Dyf-Bg-6oS" kind="show" id="Ydk-rJ-AVz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.75735330580000004" green="0.17868652939999999" blue="0.0039626229549999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="QQe-EZ-qlf" firstAttribute="centerX" secondItem="DmI-3q-Gb0" secondAttribute="centerX" id="0Mc-SB-mSY"/>
+                            <constraint firstItem="BJZ-xm-U2u" firstAttribute="top" secondItem="QQe-EZ-qlf" secondAttribute="bottom" constant="10" id="2NF-12-h0n"/>
+                            <constraint firstItem="h4A-4i-46x" firstAttribute="centerX" secondItem="DmI-3q-Gb0" secondAttribute="centerX" id="9qb-yn-Hez"/>
+                            <constraint firstItem="aIa-vg-Xz0" firstAttribute="centerX" secondItem="DmI-3q-Gb0" secondAttribute="centerX" id="DlK-IN-PIN"/>
+                            <constraint firstItem="aIa-vg-Xz0" firstAttribute="top" secondItem="h4A-4i-46x" secondAttribute="bottom" constant="20" id="Md9-gT-OK5"/>
+                            <constraint firstItem="e8P-CW-MWQ" firstAttribute="top" secondItem="aIa-vg-Xz0" secondAttribute="bottom" constant="20" id="Q37-Nn-HUd"/>
+                            <constraint firstItem="e8P-CW-MWQ" firstAttribute="centerX" secondItem="DmI-3q-Gb0" secondAttribute="centerX" id="WLE-au-YfR"/>
+                            <constraint firstItem="BJZ-xm-U2u" firstAttribute="centerX" secondItem="DmI-3q-Gb0" secondAttribute="centerX" id="ac9-Wz-s5u"/>
+                            <constraint firstItem="h4A-4i-46x" firstAttribute="top" secondItem="BJZ-xm-U2u" secondAttribute="bottom" constant="10" id="omJ-0F-9bh"/>
+                            <constraint firstItem="QQe-EZ-qlf" firstAttribute="top" secondItem="uN2-3M-sO0" secondAttribute="bottom" constant="20" id="rIg-YN-kgX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="About" id="sPR-1S-8at">
+                        <barButtonItem key="backBarButtonItem" title="About" id="SKi-lZ-21F"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wan-Qk-hHT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2764" y="-675.11244377811101"/>
+        </scene>
+        <!--Privacy Policy-->
+        <scene sceneID="m0m-oI-TCO">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Dyf-Bg-6oS" customClass="PrivacyViewController" customModule="BeerBelly" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Nci-Uy-R9Q"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wr7-cY-cbB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TUI-pR-9DR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t5g-Qa-f63">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Wr7-cY-cbB" firstAttribute="top" secondItem="t5g-Qa-f63" secondAttribute="bottom" id="3oW-Mk-ENb"/>
+                            <constraint firstItem="t5g-Qa-f63" firstAttribute="top" secondItem="Nci-Uy-R9Q" secondAttribute="bottom" id="68l-HF-sVb"/>
+                            <constraint firstAttribute="trailing" secondItem="t5g-Qa-f63" secondAttribute="trailing" id="8ov-qA-Ngb"/>
+                            <constraint firstItem="t5g-Qa-f63" firstAttribute="leading" secondItem="TUI-pR-9DR" secondAttribute="leading" id="lzx-mw-02V"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Privacy Policy" id="V1N-La-GAD">
+                        <barButtonItem key="backBarButtonItem" title="Privacy Policy" id="yVb-w3-g1p"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="webView" destination="t5g-Qa-f63" id="CTK-FM-cQd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bwr-W0-otn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3510" y="-1362"/>
+        </scene>
+        <!--License-->
+        <scene sceneID="v17-cc-IHI">
+            <objects>
+                <viewController id="FcV-m8-dyk" customClass="LicenseViewController" customModule="BeerBelly" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7wq-5X-gWW"/>
+                        <viewControllerLayoutGuide type="bottom" id="WzD-n6-UdT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SwJ-Uv-g8a">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DOa-Im-Xrp">
+                                <rect key="frame" x="10" y="74" width="355" height="100"/>
+                                <color key="backgroundColor" red="0.87843137979999997" green="0.68627452850000004" blue="0.34509804840000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="SoY-f4-mfG"/>
+                                </constraints>
+                                <color key="textColor" red="0.32532370090000001" green="0.084950782360000004" blue="0.00043527645179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEH-nJ-co1">
+                                <rect key="frame" x="10" y="184" width="355" height="100"/>
+                                <color key="backgroundColor" red="0.87843137979999997" green="0.68627452850000004" blue="0.34509804840000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="82U-4a-NEY"/>
+                                </constraints>
+                                <color key="textColor" red="0.32532370090000001" green="0.084950782360000004" blue="0.00043527645179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilk-yn-yJW">
+                                <rect key="frame" x="10" y="327.5" width="355" height="23.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" red="0.55294117649999996" green="0.1019607843" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3V-Mc-5Jb">
+                                <rect key="frame" x="10" y="361" width="355" height="23.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" red="0.55294117649999996" green="0.1019607843" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqa-jc-YDs">
+                                <rect key="frame" x="10" y="294" width="355" height="23.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" red="0.55294117649999996" green="0.1019607843" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.95075196029999998" blue="0.83344131710000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ilk-yn-yJW" firstAttribute="leading" secondItem="SwJ-Uv-g8a" secondAttribute="leading" constant="10" id="842-TX-hfB"/>
+                            <constraint firstItem="DOa-Im-Xrp" firstAttribute="top" secondItem="7wq-5X-gWW" secondAttribute="bottom" constant="10" id="92u-Bn-PQ6"/>
+                            <constraint firstItem="i3V-Mc-5Jb" firstAttribute="top" secondItem="ilk-yn-yJW" secondAttribute="bottom" constant="10" id="B37-fY-7KX"/>
+                            <constraint firstItem="Sqa-jc-YDs" firstAttribute="top" secondItem="TEH-nJ-co1" secondAttribute="bottom" constant="10" id="CPz-Lc-aqs"/>
+                            <constraint firstAttribute="trailing" secondItem="Sqa-jc-YDs" secondAttribute="trailing" constant="10" id="FGQ-ck-KwD"/>
+                            <constraint firstAttribute="trailing" secondItem="TEH-nJ-co1" secondAttribute="trailing" constant="10" id="GC5-IQ-oKJ"/>
+                            <constraint firstItem="TEH-nJ-co1" firstAttribute="top" secondItem="DOa-Im-Xrp" secondAttribute="bottom" constant="10" id="Q0O-s9-Hhr"/>
+                            <constraint firstAttribute="trailing" secondItem="DOa-Im-Xrp" secondAttribute="trailing" constant="10" id="XwG-12-uI2"/>
+                            <constraint firstItem="ilk-yn-yJW" firstAttribute="top" secondItem="Sqa-jc-YDs" secondAttribute="bottom" constant="10" id="eZm-Sf-YQI"/>
+                            <constraint firstItem="DOa-Im-Xrp" firstAttribute="leading" secondItem="SwJ-Uv-g8a" secondAttribute="leading" constant="10" id="jB7-fS-Upm"/>
+                            <constraint firstAttribute="trailing" secondItem="ilk-yn-yJW" secondAttribute="trailing" constant="10" id="mRr-Gb-Nph"/>
+                            <constraint firstItem="TEH-nJ-co1" firstAttribute="leading" secondItem="SwJ-Uv-g8a" secondAttribute="leading" constant="10" id="nI4-IW-W0m"/>
+                            <constraint firstItem="Sqa-jc-YDs" firstAttribute="leading" secondItem="SwJ-Uv-g8a" secondAttribute="leading" constant="10" id="tbZ-R6-Fj3"/>
+                            <constraint firstAttribute="trailing" secondItem="i3V-Mc-5Jb" secondAttribute="trailing" constant="10" id="vCC-0c-vtM"/>
+                            <constraint firstItem="i3V-Mc-5Jb" firstAttribute="leading" secondItem="SwJ-Uv-g8a" secondAttribute="leading" constant="10" id="wFv-Yi-hcf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="License" id="rfd-07-yHs">
+                        <barButtonItem key="backBarButtonItem" title="License" id="yJa-NX-cce"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="alamofire" destination="DOa-Im-Xrp" id="S2H-gN-zoP"/>
+                        <outlet property="beerBottle" destination="i3V-Mc-5Jb" id="8Q6-3n-ikf"/>
+                        <outlet property="breweryDB" destination="ilk-yn-yJW" id="sFh-EP-ARF"/>
+                        <outlet property="googleFonts" destination="Sqa-jc-YDs" id="aoM-b3-UUe"/>
+                        <outlet property="swiftyJSON" destination="TEH-nJ-co1" id="SNE-bR-EXR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qxw-G4-lUe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3548" y="-675"/>
         </scene>
         <!--Beer-->
         <scene sceneID="0Ls-GT-fmh">

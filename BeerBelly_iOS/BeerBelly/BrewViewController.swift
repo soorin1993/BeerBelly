@@ -11,8 +11,8 @@ import GoogleMaps
 import Alamofire
 import SwiftyJSON
 
-//let BREWERYDB_API_KEY = "d8604749e9fbcca807d465e753a72478" //dev
-let BREWERYDB_API_KEY = "fd9b5015d33721dd7bf301ea019b2fb9" //release
+let BREWERYDB_API_KEY = "d8604749e9fbcca807d465e753a72478" //dev
+//let BREWERYDB_API_KEY = "fd9b5015d33721dd7bf301ea019b2fb9" //release
 
 let baseURL = "http://api.brewerydb.com/v2/"
 
