@@ -131,8 +131,8 @@
 				6A99383A1DEBA4B7006E5F2C /* BrewViewController.swift */,
 				6A4F52961E00695E00E90BB1 /* BeerTableViewController.swift */,
 				6AD35EEE1E00AEA40049177F /* WebViewController.swift */,
-				6A921B0D1E0CAE28000DABDD /* PrivacyViewController.swift */,
 				6A921B0B1E0C9B66000DABDD /* LicenseViewController.swift */,
+				6A921B0D1E0CAE28000DABDD /* PrivacyViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";

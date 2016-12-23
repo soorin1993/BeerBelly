@@ -15,7 +15,7 @@ class PrivacyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var privacyURL = "https://soorin1993.github.io/BeerBelly/doc/Privacy_Policy.pdf"
+        var privacyURL = "https://soorin1993.github.io/BeerBelly/doc/Privacy_Policy.html"
         let url = URL(string: privacyURL);
         let request = URLRequest(url: url!)
         webView.loadRequest(request)

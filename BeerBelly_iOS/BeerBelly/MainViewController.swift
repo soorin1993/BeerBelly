@@ -88,9 +88,11 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.navigationController?.navigationBar.isHidden = true;
     }
     
-    override func viewDidLoad() {
-        
+    override func viewDidAppear(_ animated: Bool) {
         view.endEditing(true)
+    }
+    
+    override func viewDidLoad() {
         
         styleTextField.delegate = self
         cityTextField.delegate = self
@@ -195,20 +197,21 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
         toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor.blue
+        toolBar.tintColor = UIColor(red: 178.0/255.0, green: 27.0/255.0, blue: 3.0/255.0, alpha: 1.0)
         toolBar.sizeToFit()
         
         let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(MainViewController.donePicker))
-        doneButton.tintColor = UIColor.darkGray
+        doneButton.tintColor = UIColor(red: 178.0/255.0, green: 27.0/255.0, blue: 3.0/255.0, alpha: 1.0)
         
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         
         let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(MainViewController.donePicker))
-        cancelButton.tintColor = UIColor.darkGray
-        
+        cancelButton.tintColor = UIColor(red: 178.0/255.0, green: 27.0/255.0, blue: 3.0/255.0, alpha: 1.0)
+
         
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
+        toolBar.barTintColor = UIColor(red: 255.0/255.0, green: 239.0/255.0, blue: 204.0/255.0, alpha:1.0)
         
         styleTextField.inputAccessoryView = toolBar
         cityTextField.inputAccessoryView = toolBar
