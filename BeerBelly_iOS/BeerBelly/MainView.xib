@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Bungee-Regular.ttf">
+            <string>Bungee-Regular</string>
+        </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MainView" customModule="BeerBelly" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f34-I9-Deu">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="beer_icon" translatesAutoresizingMaskIntoConstraints="NO" id="heu-NQ-Ue5">
+                            <rect key="frame" x="113" y="84" width="150" height="150"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="150" id="Cge-jx-jLm"/>
+                                <constraint firstAttribute="height" constant="150" id="coa-rA-gk3"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="drinkButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHU-pB-Ufw">
+                            <rect key="frame" x="115" y="619" width="146" height="32"/>
+                            <color key="backgroundColor" red="0.75735330580000004" green="0.17868652939999999" blue="0.0039626229549999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="Bungee-Regular" family="Bungee" pointSize="20"/>
+                            <color key="tintColor" red="0.75735431909999995" green="0.17871913310000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="MY LOCATION">
+                                <color key="titleColor" red="1" green="0.95075196029999998" blue="0.83344131710000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEER BELLY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJF-CT-4rZ">
+                            <rect key="frame" x="75" y="264" width="225" height="35"/>
+                            <fontDescription key="fontDescription" name="Bungee-Regular" family="Bungee" pointSize="35"/>
+                            <color key="textColor" red="1" green="0.95075196029999998" blue="0.83344131710000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="stateTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xwc-JW-B0q">
+                            <rect key="frame" x="38" y="514" width="299" height="30"/>
+                            <color key="backgroundColor" red="1" green="0.95075196029999998" blue="0.83344131710000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" red="0.75735330580000004" green="0.17868652939999999" blue="0.0039626229549999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="zipTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zipcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1mx-kv-Lly">
+                            <rect key="frame" x="38" y="559" width="299" height="30"/>
+                            <color key="backgroundColor" red="1" green="0.95075196029999998" blue="0.83344131710000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" red="0.75735330580000004" green="0.17868652939999999" blue="0.0039626229549999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                        </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I like..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgX-Sc-O7W">
+                            <rect key="frame" x="38" y="329" width="94" height="20"/>
+                            <fontDescription key="fontDescription" name="Bungee-Regular" family="Bungee" pointSize="20"/>
+                            <color key="textColor" red="0.69803921570000005" green="0.1058823529" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I live in..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y75-jd-r3J">
+                            <rect key="frame" x="38" y="429" width="125" height="20"/>
+                            <fontDescription key="fontDescription" name="Bungee-Regular" family="Bungee" pointSize="20"/>
+                            <color key="textColor" red="0.69803921570000005" green="0.1058823529" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="styleTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose a style" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Myz-3t-wV5">
+                            <rect key="frame" x="38" y="369" width="299" height="30"/>
+                            <color key="backgroundColor" red="1" green="0.95075196029999998" blue="0.83344131710000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" red="0.60674697160000002" green="0.14485517140000001" blue="0.013825245200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cityTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GRl-MA-F5H">
+                            <rect key="frame" x="38" y="469" width="299" height="30"/>
+                            <color key="backgroundColor" red="1" green="0.95075196029999998" blue="0.83344131710000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" red="0.75735330580000004" green="0.17868652939999999" blue="0.0039626229549999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" red="0.32534635070000001" green="0.080883003770000003" blue="0.00063429109290000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="Myz-3t-wV5" firstAttribute="leading" secondItem="f34-I9-Deu" secondAttribute="leadingMargin" constant="30" id="2Zr-fP-bdf"/>
+                        <constraint firstItem="tHU-pB-Ufw" firstAttribute="top" secondItem="1mx-kv-Lly" secondAttribute="bottom" constant="30" id="9Nt-XW-eIt"/>
+                        <constraint firstItem="BJF-CT-4rZ" firstAttribute="centerX" secondItem="f34-I9-Deu" secondAttribute="centerX" id="CqW-JL-bvT"/>
+                        <constraint firstAttribute="trailingMargin" secondItem="1mx-kv-Lly" secondAttribute="trailing" constant="30" id="GYW-S4-Whq"/>
+                        <constraint firstItem="heu-NQ-Ue5" firstAttribute="top" secondItem="f34-I9-Deu" secondAttribute="top" constant="84" id="GpB-Y6-yq7"/>
+                        <constraint firstItem="BJF-CT-4rZ" firstAttribute="top" secondItem="heu-NQ-Ue5" secondAttribute="bottom" constant="30" id="HF0-hO-qXT"/>
+                        <constraint firstItem="GRl-MA-F5H" firstAttribute="top" secondItem="y75-jd-r3J" secondAttribute="bottom" constant="20" id="ICw-7Y-Fd5"/>
+                        <constraint firstItem="pgX-Sc-O7W" firstAttribute="leading" secondItem="f34-I9-Deu" secondAttribute="leadingMargin" constant="30" id="IrB-gS-Z7A"/>
+                        <constraint firstItem="GRl-MA-F5H" firstAttribute="leading" secondItem="f34-I9-Deu" secondAttribute="leadingMargin" constant="30" id="Joh-Lo-t7T"/>
+                        <constraint firstAttribute="trailingMargin" secondItem="GRl-MA-F5H" secondAttribute="trailing" constant="30" id="OMc-Mg-CnL"/>
+                        <constraint firstAttribute="trailingMargin" secondItem="Xwc-JW-B0q" secondAttribute="trailing" constant="30" id="RCf-Zd-bBN"/>
+                        <constraint firstItem="y75-jd-r3J" firstAttribute="top" secondItem="Myz-3t-wV5" secondAttribute="bottom" constant="30" id="WiF-dB-kwG"/>
+                        <constraint firstItem="1mx-kv-Lly" firstAttribute="top" secondItem="Xwc-JW-B0q" secondAttribute="bottom" constant="15" id="X7A-7a-mwE"/>
+                        <constraint firstItem="Xwc-JW-B0q" firstAttribute="top" secondItem="GRl-MA-F5H" secondAttribute="bottom" constant="15" id="bv1-Yw-Q7R"/>
+                        <constraint firstItem="Xwc-JW-B0q" firstAttribute="leading" secondItem="f34-I9-Deu" secondAttribute="leadingMargin" constant="30" id="dFJ-Rx-wQ6"/>
+                        <constraint firstItem="1mx-kv-Lly" firstAttribute="leading" secondItem="f34-I9-Deu" secondAttribute="leadingMargin" constant="30" id="dpJ-TP-ovL"/>
+                        <constraint firstItem="tHU-pB-Ufw" firstAttribute="centerX" secondItem="f34-I9-Deu" secondAttribute="centerX" id="e3B-SA-vHz"/>
+                        <constraint firstItem="Myz-3t-wV5" firstAttribute="top" secondItem="pgX-Sc-O7W" secondAttribute="bottom" constant="20" id="l2q-vP-5kv"/>
+                        <constraint firstItem="y75-jd-r3J" firstAttribute="leading" secondItem="f34-I9-Deu" secondAttribute="leadingMargin" constant="30" id="rtK-Td-GDv"/>
+                        <constraint firstItem="pgX-Sc-O7W" firstAttribute="top" secondItem="BJF-CT-4rZ" secondAttribute="bottom" constant="30" id="vD3-Kw-S4Q"/>
+                        <constraint firstAttribute="trailingMargin" secondItem="Myz-3t-wV5" secondAttribute="trailing" constant="30" id="vHK-B1-yCM"/>
+                        <constraint firstItem="heu-NQ-Ue5" firstAttribute="centerX" secondItem="f34-I9-Deu" secondAttribute="centerX" id="yCL-pn-CSb"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="f34-I9-Deu" secondAttribute="bottom" id="68X-gS-HRV"/>
+                <constraint firstItem="f34-I9-Deu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="U2s-h1-tUp"/>
+                <constraint firstAttribute="trailing" secondItem="f34-I9-Deu" secondAttribute="trailing" id="ac1-rR-5Kf"/>
+                <constraint firstItem="f34-I9-Deu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="eNX-hT-i4C"/>
+            </constraints>
+            <connections>
+                <outlet property="styleTextField" destination="Myz-3t-wV5" id="IP4-pX-9jv"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="beer_icon" width="512" height="512"/>
+    </resources>
+</document>

@@ -1,0 +1,10 @@
+{
+  "xcodeVersion" : "Xcode 8.2.1\nBuild version 8C1002",
+  "commitish" : "b29efe9a18db8ce08d3dc2bdf332ccdd309683ca",
+  "iOS" : [
+    {
+      "hash" : "65a344b7ea14e01e15d293c2fa5fd509c58ff16e3012d4de50465385e47ba12e",
+      "name" : "Lottie"
+    }
+  ]
+}

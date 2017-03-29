@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WxA-n3-f4c">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WxA-n3-f4c">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -98,11 +98,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.32534635066986084" green="0.080883003771305084" blue="0.00063429109286516905" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Yme-sI-7Oa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="33B-Tj-iXl"/>
                             <constraint firstItem="pIV-Y6-8iE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="3iy-gV-fA8"/>
                             <constraint firstItem="Giu-55-JQ9" firstAttribute="top" secondItem="e1b-Df-1Me" secondAttribute="bottom" constant="20" id="9vB-Rq-QBK"/>
                             <constraint firstItem="Bxx-I3-9qI" firstAttribute="top" secondItem="Ig3-WB-Nmd" secondAttribute="bottom" constant="20" id="A5Y-0h-eJ4"/>
                             <constraint firstItem="Cj7-GU-g7i" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="GFk-vh-EZU"/>
-                            <constraint firstItem="Yme-sI-7Oa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="Ibz-V9-p4V"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Cj7-GU-g7i" secondAttribute="trailing" constant="30" id="KDE-13-EOR"/>
                             <constraint firstItem="pGL-s9-wYP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KK1-TU-gaQ"/>
                             <constraint firstItem="pGL-s9-wYP" firstAttribute="top" secondItem="pIV-Y6-8iE" secondAttribute="bottom" constant="30" id="O5Q-p2-KK8"/>
@@ -316,7 +316,7 @@ All Rights Reserved.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIa-vg-Xz0">
-                                <rect key="frame" x="141.5" y="290" width="93" height="32"/>
+                                <rect key="frame" x="141" y="290" width="93" height="32"/>
                                 <fontDescription key="fontDescription" name="Bungee-Regular" family="Bungee" pointSize="20"/>
                                 <state key="normal" title="License">
                                     <color key="titleColor" red="1" green="0.95075196029999998" blue="0.83344131710000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -326,7 +326,7 @@ All Rights Reserved.</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e8P-CW-MWQ">
-                                <rect key="frame" x="96.5" y="342" width="182" height="32"/>
+                                <rect key="frame" x="97" y="342" width="182" height="32"/>
                                 <fontDescription key="fontDescription" name="Bungee-Regular" family="Bungee" pointSize="20"/>
                                 <state key="normal" title="Privacy Policy">
                                     <color key="titleColor" red="1" green="0.95075196029999998" blue="0.83344131710000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -427,19 +427,19 @@ All Rights Reserved.</string>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilk-yn-yJW">
-                                <rect key="frame" x="10" y="327.5" width="355" height="23.5"/>
+                                <rect key="frame" x="10" y="328" width="355" height="24"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.55294117649999996" green="0.1019607843" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3V-Mc-5Jb">
-                                <rect key="frame" x="10" y="361" width="355" height="23.5"/>
+                                <rect key="frame" x="10" y="362" width="355" height="24"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.55294117649999996" green="0.1019607843" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqa-jc-YDs">
-                                <rect key="frame" x="10" y="294" width="355" height="23.5"/>
+                                <rect key="frame" x="10" y="294" width="355" height="24"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.55294117649999996" green="0.1019607843" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -607,7 +607,7 @@ All Rights Reserved.</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WxA-n3-f4c" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="k97-Wd-fxs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="k97-Wd-fxs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="0.93725490199999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>

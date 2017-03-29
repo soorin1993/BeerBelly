@@ -10,6 +10,7 @@ import UIKit
 import GoogleMaps
 import Alamofire
 import SwiftyJSON
+import Spruce
 
 let BREWERYDB_API_KEY = "d8604749e9fbcca807d465e753a72478" //dev
 //let BREWERYDB_API_KEY = "fd9b5015d33721dd7bf301ea019b2fb9" //release
@@ -51,7 +52,10 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            
+        
+        let sortFunction1 = LinearSortFunction(direction: .topToBottom, interObjectDelay: 0.025)
+        view.spruce.animate([.fadeIn, .expand(.slightly)], sortFunction: sortFunction1)
+        
         createMap()
         
         activityIndicatorView.startAnimating()
@@ -60,6 +64,9 @@ class BrewViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        let sortFunction2 = LinearSortFunction(direction: .topToBottom, interObjectDelay: 0.025)
+        self.tableView.spruce.animate([.fadeIn, .expand(.slightly)], sortFunction: sortFunction2)
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100; //Set this to any value that works for you.

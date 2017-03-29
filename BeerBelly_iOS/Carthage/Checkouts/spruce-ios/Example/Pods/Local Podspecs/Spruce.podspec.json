@@ -1,0 +1,21 @@
+{
+  "name": "Spruce",
+  "version": "1.0",
+  "summary": "Swift library for choreographing animations on the screen.",
+  "homepage": "https://github.com/willowtreeapps/spruce-ios",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "WillowTree, Inc.": "opensource@willowtreeapps.com"
+  },
+  "source": {
+    "git": "https://github.com/willowtreeapps/spruce-ios.git"
+  },
+  "platforms": {
+    "ios": "8.0",
+    "tvos": "9.0"
+  },
+  "source_files": "Sources/Classes/**/*"
+}

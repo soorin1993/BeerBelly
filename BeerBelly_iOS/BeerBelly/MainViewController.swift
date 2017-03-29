@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Spruce
 
 var styleList = [String]()
 var availableList = [String]()
@@ -74,10 +75,10 @@ let stateDic = ["State": "",
 class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
     
-    @IBOutlet weak var styleTextField: UITextField!
-    @IBOutlet weak var cityTextField: UITextField!
-    @IBOutlet weak var stateTextField: UITextField!
-    @IBOutlet weak var zipTextField: UITextField!
+//    @IBOutlet weak var styleTextField: UITextField!
+//    @IBOutlet weak var cityTextField: UITextField!
+//    @IBOutlet weak var stateTextField: UITextField!
+//    @IBOutlet weak var zipTextField: UITextField!
     
     @IBOutlet weak var drinkButton: UIButton!
     
@@ -93,6 +94,9 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     override func viewDidLoad() {
+        
+        let sortFunction = LinearSortFunction(direction: .topToBottom, interObjectDelay: 0.025)
+        view.spruce.animate([.fadeIn, .expand(.slightly)], sortFunction: sortFunction)
         
         styleTextField.delegate = self
         cityTextField.delegate = self
